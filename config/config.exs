@@ -10,6 +10,7 @@ config :resume,
   ecto_repos: [Resume.Repo]
 
 # Configures the endpoint
+#secret key is to localhost, production key is not tracked on vc
 config :resume, Resume.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "cqGx8GflxkFuMtYrmNxxWQV7PxyVAz1KnVENdAiZSY7sTZkaU9PZGaHyPwzNfczF",
@@ -22,21 +23,5 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Import environment specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
+#enviromental configurations
 import_config "#{Mix.env}.exs"
-
-# %% Coherence Configuration %%   Don't remove this line
-config :coherence,
-  user_schema: Resume.User,
-  repo: Resume.Repo,
-  module: Resume,
-  logged_out_url: "/",
-  email_from_name: "Nicholas Kelley",
-  email_from_email: "nickdk.1995@gmail.com",
-  opts: [:authenticatable, :recoverable, :lockable, :unlockable_with_token]
-
-config :coherence, Resume.Coherence.Mailer,
-  adapter: Swoosh.Adapters.Sendgrid,
-  api_key: "your api key here"
-# %% End Coherence Configuration %%
