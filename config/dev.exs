@@ -41,3 +41,18 @@ config :resume, Resume.Repo,
   database: "resume_dev",
   hostname: "localhost",
   pool_size: 10
+
+# %% Coherence Configuration %%   Don't remove this line
+config :coherence,
+  user_schema: Resume.User,
+  repo: Resume.Repo,
+  module: Resume,
+  logged_out_url: "/",
+  email_from_name: "Bob Ross",
+  email_from_email: "example@example.com",
+  opts: [:authenticatable, :recoverable, :lockable, :unlockable_with_token]
+
+config :coherence, Resume.Coherence.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: "wow"
+# %% End Coherence Configuration %%
