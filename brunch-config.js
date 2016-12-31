@@ -55,7 +55,7 @@ exports.config = {
   },
 
   npm: {
-    enabled: true
+    enabled: true,
     globals: { // bootstrap-sass' JavaScript requires both '$' and 'jQuery' in global scope
       $: 'jquery',
       jQuery: 'jquery',
