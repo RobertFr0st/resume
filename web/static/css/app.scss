@@ -1,2 +1,32 @@
 $icon-font-path: "/fonts/"; /* use fonts from priv/static/fonts/ */
 @import "bootstrap"; /* imports node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss */
+
+body {
+  text-align: center;
+
+  h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+    font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  
+  @media (min-width: 768px) {
+    p {
+      font-size: 26px;
+      margin: 0 0 35px;
+      line-height: 1.6;
+    }
+
+
+    h1 {
+      font-size: 100px;
+    }
+  }
+}
