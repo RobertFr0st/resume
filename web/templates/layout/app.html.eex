@@ -28,7 +28,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/registrations/new">Log In</a></li>
+            <li><a href="/users/signin">Sign In</a></li>
             <li><a href="/registrations/new">Sign Up</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
