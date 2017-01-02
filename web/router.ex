@@ -34,8 +34,11 @@ defmodule Resume.Router do
     pipe_through :browser # Use the default browser stack
     # Add public routes below
     get "/", PageController, :index
+    get "/invitation_form", InvitationController, :new
+    #put "/invitations/new", UserController, :new
   end
 
+  #protected means if you are not logged in redirects you to user login page
   scope "/", Resume do
     pipe_through :protected
     # Add protected routes below
