@@ -50,7 +50,7 @@ config :coherence,
   logged_out_url: "/",
   email_from_name: "Bob Ross",
   email_from_email: "example@example.com",
-  opts: [:authenticatable, :recoverable, :lockable, :unlockable_with_token]
+  opts: [:authenticatable, :recoverable, :lockable, :trackable, :unlockable_with_token, :invitable, :registerable]
 
 config :coherence, Resume.Coherence.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,

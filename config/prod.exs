@@ -21,7 +21,7 @@ config :coherence,
   logged_out_url: "/",
   email_from_name: System.get_env("NAME_FROM"),
   email_from_email: System.get_env("EMAIL_FROM"),
-  opts: [:authenticatable, :recoverable, :lockable, :unlockable_with_token]
+  opts: [:authenticatable, :recoverable, :lockable, :trackable, :unlockable_with_token, :invitable, :registerable]
 
 config :coherence, Resume.Coherence.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,
