@@ -28,7 +28,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <%= if logged_in?(@conn) do %>
+            <%= if Coherence.logged_in?(@conn) do %>
+
+              <li><%= link "Show", to: registration_path(@conn, :show) %></li>
+              <li><%= link "Edit", to: registration_path(@conn, :edit) %></li>
               <li class="navbar-form">
                 <%= link "Sign Out", to: session_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
               </li>
