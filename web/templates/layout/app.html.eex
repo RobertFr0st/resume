@@ -30,12 +30,8 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/sessions/new">Sign In</a></li>
             <li><a href="/registrations/new">Sign Up</a></li>
-            <li>
-              <form action="/sessions" class="navbar-form navbar-right " method="post">
-                <input name="_method" type="hidden" value="delete">
-                <input name="_csrf_token" type="hidden" value="BxZ/FkgPXjYgAhs2MgcRHlQyGHJzJgAAnGGTx7lTXKMxCIY/5PQ0KQ==">
-                <button class="btn btn-danger" type="submit">Log Out</button>
-              </form> 
+            <li class="navbar-form">
+              <%= link "Sign Out", to: session_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
