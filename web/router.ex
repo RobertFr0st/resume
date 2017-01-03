@@ -40,9 +40,5 @@ defmodule Resume.Router do
   scope "/", Resume do
     pipe_through :protected
     # Add protected routes below
-    resources "/users", UserController
-    put "/lock/:id", UserController, :lock
-    put "/unlock/:id", UserController, :unlock
-    put "/confirm/:id", UserController, :confirm
   end
 end
