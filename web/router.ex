@@ -20,12 +20,12 @@ defmodule Resume.Router do
     plug Coherence.Authentication.Session, protected: true
   end
 
-  scope "/" do
+  scope "/", Resume do
     pipe_through :browser
     coherence_routes
   end
 
-  scope "/" do
+  scope "/", Resume do
     pipe_through :protected
     coherence_routes :protected
   end
