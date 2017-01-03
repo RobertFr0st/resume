@@ -23,22 +23,13 @@ defmodule Resume.Router do
   scope "/", Resume do
     pipe_through :browser
     coherence_routes
+    # Add public routes below
+    get "/", PageController, :index
   end
 
   scope "/", Resume do
     pipe_through :protected
     coherence_routes :protected
-  end
-
-  scope "/", Resume do
-    pipe_through :browser # Use the default browser stack
-    # Add public routes below
-    get "/", PageController, :index
-  end
-
-  #protected means if you are not logged in redirects you to user login page
-  scope "/", Resume do
-    pipe_through :protected
     # Add protected routes below
   end
 end

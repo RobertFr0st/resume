@@ -34,7 +34,7 @@
               <form action="/sessions" class="navbar-form navbar-right " method="post">
                 <input name="_method" type="hidden" value="delete">
                 <input name="_csrf_token" type="hidden" value="BxZ/FkgPXjYgAhs2MgcRHlQyGHJzJgAAnGGTx7lTXKMxCIY/5PQ0KQ==">
-                <button class="btn btn-danger" type="submit">Logout</button>
+                <button class="btn btn-danger" type="submit">Log Out</button>
               </form> 
             </li>
           </ul>
