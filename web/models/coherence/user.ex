@@ -18,4 +18,11 @@ defmodule Resume.User do
     |> unique_constraint(:email)
     |> validate_coherence(params)
   end
+
+  def current_user(conn) do
+    id = Plug.Conn.get_session(conn, :current_user)
+    if id, do: Resume.Repo.get(Resume.User, id)
+  end
+
+  def logged_in?(conn), do: !!current_user(conn)
 end

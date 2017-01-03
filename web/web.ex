@@ -49,6 +49,8 @@ defmodule Resume.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
+      import Resume.User, only: [current_user: 1, logged_in?: 1]
+
       import Resume.Router.Helpers
       import Resume.ErrorHelpers
       import Resume.Gettext

@@ -80,6 +80,7 @@ defmodule Resume.Coherence.SessionController do
           |> reset_failed_attempts(user, lockable?)
           |> track_login(user, user_schema.trackable?)
           |> save_rememberable(user, remember)
+          |> put_session(:current_user, user.id)
           |> put_flash(:notice, "Signed in successfully.")
           |> redirect_to(:session_create, params)
         else
@@ -110,6 +111,7 @@ defmodule Resume.Coherence.SessionController do
   """
   def delete(conn, params) do
     delete(conn)
+    |> delete_session(:current_user)
     |> redirect_to(:session_delete, params)
   end
 
