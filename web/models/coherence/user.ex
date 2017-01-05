@@ -7,6 +7,7 @@ defmodule Resume.User do
     field :email, :string
     coherence_schema
 
+    has_many :skills, Resume.Skill
     timestamps
   end
 
