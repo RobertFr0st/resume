@@ -13,6 +13,7 @@ defmodule Resume.Coherence.RegistrationController do
   use Coherence.Web, :controller
   require Logger
   alias Coherence.ControllerHelpers, as: Helpers
+  alias Resume.Repo
 
   plug Coherence.RequireLogin when action in ~w(show edit update delete)a
   plug Coherence.ValidateOption, :registerable
