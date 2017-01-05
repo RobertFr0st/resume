@@ -66,11 +66,22 @@ defmodule Resume.Coherence.RegistrationController do
   end
 
   @doc """
-  Show the registration page.
+    Show the registration page.
+    Modified to also show the skills belonging to the user
   """
   def show(conn, _) do
-    user = Coherence.current_user(conn)
+    user = Coherence.current_user(conn) |> Repo.preload([:skills])
     render(conn, "show.html", user: user)
+  end
+
+  @doc """
+    Show the registered users
+    View and route left unimplimented as there is no such thing as an administrator user
+    Controller implimented for completeness
+  """
+  def index(conn, _) do
+    users = User |> Repo.all |> Repo.preload([:skills])
+    render(conn, "index.html", users: users)
   end
 
   @doc """
