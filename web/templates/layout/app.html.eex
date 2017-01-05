@@ -30,6 +30,7 @@
           <ul class="nav navbar-nav navbar-right">
             <%= if Coherence.logged_in?(@conn) do %>
 
+              <li><%= link "New Skill", to: skill_path(@conn, :new) %></li>
               <li><%= link "Show", to: registration_path(@conn, :show) %></li>
               <li><%= link "Edit", to: registration_path(@conn, :edit) %></li>
               <li class="navbar-form">
