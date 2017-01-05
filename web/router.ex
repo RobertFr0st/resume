@@ -31,6 +31,6 @@ defmodule Resume.Router do
     pipe_through :protected
     coherence_routes :protected
     # Add protected routes below
-    resources "/skills", Resume.SkillController, except: [:show, :index]
+    resources "/skills", SkillController, except: [:show, :index]
   end
 end
