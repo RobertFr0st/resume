@@ -14,6 +14,8 @@ defmodule Resume.Skill do
 
   @doc """
   Builds a changeset based on the `struct` and `params`.
+
+  Supported catagories: work, volunteer, education, awards, publications, skills, languages
   """
   def changeset(struct, params \\ %{}) do
     struct

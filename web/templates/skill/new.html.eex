@@ -2,15 +2,15 @@
 
 <%= form_for @conn, skill_path(@conn, :create), [as: :skill], fn f  -> %>
   <div class="form-group">
-    <%= label f, :name, class: "control-label" %>
-    <%= text_input f, :name, class: "form-control", required: "" %>
-    <%= error_tag f, :name %>
+    <%= label f, :category, class: "control-label" %>
+    <%= select f, :category, ["Work", "Volunteer", "Education", "Award", "Publication", "Skill", "Language"], class: "form-control" %>
+    <%= error_tag f, :category %>
   </div>
 
   <div class="form-group">
-    <%= label f, :category, class: "control-label" %>
-    <%= text_input f, :category, class: "form-control", required: "" %>
-    <%= error_tag f, :category %>
+    <%= label f, :name, class: "control-label" %>
+    <%= text_input f, :name, class: "form-control", required: "" %>
+    <%= error_tag f, :name %>
   </div>
 
   <div class="form-group">
@@ -30,14 +30,6 @@
     <%= date_select f, :end_date , year: [options: (DateTime.utc_now.year - 100)..DateTime.utc_now.year] %>
     <%= error_tag f, :end_date %>
   </div>
-
-    <!--
-    plus create action needs to append parent user as fk id
-    field :name, :string
-    field :start_date, Ecto.DateTime
-    field :end_date, Ecto.DateTime
-    field :description, :string
-    field :category, :string -->
 
   <div class="form-group">
     <%= submit "Create Skill", class: "btn btn-primary" %>
