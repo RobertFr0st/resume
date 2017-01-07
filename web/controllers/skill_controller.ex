@@ -26,11 +26,11 @@ defmodule Resume.SkillController do
     end
   end
 
-  def edit(conn, id) do
-    render conn, "edit.html"
+  def edit(conn, %{"id" => id}) do
+    render conn, :edit
   end
 
-  def update(conn, id) do
+  def update(conn, %{"id" => id}) do
   end
 
   def delete(conn, %{"id" => id}) do
