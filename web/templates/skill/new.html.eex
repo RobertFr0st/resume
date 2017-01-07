@@ -38,5 +38,4 @@
     <%= submit "Create Skill", class: "btn btn-primary" %>
     <%= link "Cancel", to: registration_path(@conn, :show), class: "btn" %>
   </div>
-
 <% end %>

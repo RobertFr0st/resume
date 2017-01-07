@@ -30,7 +30,20 @@ defmodule Resume.SkillController do
     render conn, :edit
   end
 
-  def update(conn, %{"id" => id}) do
+  def update(conn, %{"id" => id, "skill" => %{"category" => category, "name" => name, "start_date" => start_date, "end_date" => end_date, "description" => description}}) do
+    skill = Repo.get!(Skill, id)
+    |> Ecto.Changeset.change(%{category: category, name: name, start_date: Ecto.Date.cast!(start_date), end_date: Ecto.Date.cast!(end_date), description: description})
+
+    case Repo.update(skill) do
+      {:ok, _skill} ->
+        conn
+        |> put_flash(:info, "Skill updated successfully.")
+        |> redirect(to: registration_path(conn, :show))
+      {:error, _changeset} ->
+        conn
+        |> put_flash(:error, "Skill update failed")
+        |> render(:edit, changeset: skill)
+    end
   end
 
   def delete(conn, %{"id" => id}) do
