@@ -21,7 +21,7 @@ defmodule Resume.SkillController do
         |> redirect(to: registration_path(conn, :show))
       {:error, changeset} ->
         conn
-        |> put_flash(:error, "Skill creation was unsuccessful")
+        |> put_flash(:error, "Skill creation failed")
         |> render(:new, changeset: changeset)
     end
   end
@@ -33,6 +33,18 @@ defmodule Resume.SkillController do
   def update(conn, id) do
   end
 
-  def delete(conn, id) do
+  def delete(conn, %{"id" => id}) do
+    skill = Repo.get!(Skill, id)
+
+    case Repo.delete(skill) do
+      {:ok, _skill} ->
+        conn
+        |> put_flash(:info, "Skill deleted successfully.")
+        |> redirect(to: registration_path(conn, :show))
+      {:error, _changeset} ->
+        conn
+        |> put_flash(:error, "Skill delete failed")
+        |> redirect(to: registration_path(conn, :show))
+    end
   end
 end
