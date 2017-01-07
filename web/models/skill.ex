@@ -17,9 +17,11 @@ defmodule Resume.Skill do
 
   Supported catagories: work, volunteer, education, awards, publications, skills, languages
   """
-  def changeset(struct, params \\ %{}) do
-    struct
+  def changeset(skill, params \\ %{}) do
+    skill
     |> cast(params, [:name, :start_date, :end_date, :description, :category])
+    |> cast_assoc(:user)
     |> validate_required([:name, :start_date, :end_date, :description, :category])
+    |> assoc_constraint(:user)
   end
 end
