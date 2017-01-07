@@ -3,8 +3,8 @@ defmodule Resume.Skill do
 
   schema "skills" do
     field :name, :string
-    field :start_date, Ecto.DateTime
-    field :end_date, Ecto.DateTime
+    field :start_date, Ecto.Date
+    field :end_date, Ecto.Date
     field :description, :string
     field :category, :string
     belongs_to :user, Resume.User
@@ -18,8 +18,8 @@ defmodule Resume.Skill do
   Supported catagories: work, volunteer, education, awards, publications, skills, languages
   """
   def changeset(skill, params \\ %{}) do
-    skill
-    |> cast(params, [:name, :start_date, :end_date, :description, :category])
+
+    cast(skill, params, [:category, :description, :end_date, :name, :start_date])
     |> cast_assoc(:user)
     |> validate_required([:name, :start_date, :end_date, :description, :category])
     |> assoc_constraint(:user)
