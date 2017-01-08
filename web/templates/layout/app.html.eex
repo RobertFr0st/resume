@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <%= if Coherence.logged_in?(@conn) do %>
-
+              <li><%= link "Resume", to: pdf_path(@conn, :export) %></li>
               <li><%= link "New Skill", to: skill_path(@conn, :new) %></li>
               <li><%= link "Show", to: registration_path(@conn, :show) %></li>
               <li><%= link "Edit", to: registration_path(@conn, :edit) %></li>

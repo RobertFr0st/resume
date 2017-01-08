@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ResuGen</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <main role="main">
+        <div class="row">
+          <div class="col-sm-offset-3 col-sm-6">
+            <h1>ResuGen</h1>
+            <p>Hi I'm Nick. This app keeps track of all my resume worthy skills to easily generate resumes. Sign up to do the same!</p>
+          </div>
+        </div>
+      </main>
+    </div> <!-- /container -->
+  </body>
+</html>

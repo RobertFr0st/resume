@@ -2,7 +2,7 @@ defmodule Resume.PdfController do
   use Resume.Web, :controller
 
   def export(conn, _) do
-    {:ok, pdf} = render_to_string(Resume.PdfView, :resume, name: "resume")
+    pdf = Phoenix.View.render_to_string(Resume.PdfView, "pdf.html", changeset: %{})
       |> PdfGenerator.generate_binary!
 
     download(conn, pdf)
