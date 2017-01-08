@@ -26,7 +26,7 @@ defmodule Resume.SkillController do
     end
   end
 
-  def edit(conn, %{"id" => id}) do
+  def edit(conn, _) do
     render conn, :edit
   end
 
