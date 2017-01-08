@@ -43,6 +43,7 @@
 
       li {
         font-size: 11px;
+        text-align: left;
       }
 
       .main {
@@ -56,6 +57,26 @@
       .description {
         font-size: 10px;
       }
+
+      .no-bullet {
+        list-style: none;
+      }
+
+      .right {
+        text-align: right;
+      }
+
+      .left {
+        text-align: left;
+      }
+
+      p {
+        margin-bottom: 0px;
+      }
+
+      .reference {
+        margin-bottom: 10px;
+      }
     </style>
 
     <title>ResuGen</title>
@@ -63,41 +84,45 @@
 
   <body>
    <div class="container">
-     <div id="header">
-       <h1 class="name">Nicholas Daniel Kelley</h1>
-       <h1 class="title">Software Developer</h1>
+     <div id="header" class="row">
+       <p class="name col-xs-12">Nicholas Daniel Kelley</p>
+       <p class="title col-xs-12">Software Developer</p>
      </div>
 
      <hr>
 
-     <div id="contact row">
+     <div id="contact" class="row">
        <div id="email" class="col-xs-3">
-         <p class="email"><b>Email</b> txy741@vols.utk.edu<p>
+         <p class="email left"><b>Email</b> txy741@vols.utk.edu<p>
        </div>
        <div id="phone" class="col-xs-3">
-         <p class="phone"><b>Phone</b> (931) 801-5977</p>
+         <p class="phone left"><b>Phone</b> (931) 801-5977</p>
        </div>
        <div id="address" class="col-xs-6">
-         <p class="address"><b>Address</b> 1118 Walnut Branch Lane, Knoxville TN 37922</p>
+         <p class="address left"><b>Address</b> 1118 Walnut Branch Lane, Knoxville TN 37922</p>
        </div>
      </div>
 
+     <hr>
+
      <div id="objective" class="row">
-       <p class="objective"><b>Objective</b> Seeking Internship for Summer of 2017</p>
+       <p class="objective left col-xs-12"><b>Objective</b> Seeking Internship for Summer of 2017</p>
      </div>
+
+     <hr>
 
      <div id="skill" class="row">
        <p class="section-title"><b>Skills</b></p>
-         <div class="col-xs-3">
-         <ul>
+         <div class="col-xs-offset-2 col-xs-2">
+         <ul class="no-bullet">
            <li>Bootstrap</li>
            <li>HTML and CSS</li>
            <li>Git</li>
          </ul>
          </div>
 
-         <div class="col-xs-3">
-         <ul>
+         <div class="col-xs-2">
+         <ul class="no-bullet">
            <li>C</li>
            <li>C#</li>
            <li>C++</li>
@@ -105,8 +130,8 @@
          </ul>
          </div>
 
-         <div class="col-xs-3">
-         <ul>
+         <div class="col-xs-2">
+         <ul class="no-bullet">
            <li>Elixir</li>
            <li>Erlang</li>
            <li>Phoenix</li>
@@ -114,8 +139,8 @@
          </ul>
          </div>
 
-         <div class="col-xs-3">
-         <ul>
+         <div class="col-xs-2">
+         <ul class="no-bullet">
            <li>Java</li>
            <li>Javascript</li>
            <li>D3</li>
@@ -124,33 +149,37 @@
         </div>
      </div>
 
+     <hr>
+
      <div id="education">
        <div class="row">
          <p class="section-title"><b>Education</b></p>
        </div>
-       <ul>
+         <ul class="no-bullet">
          <li>
            <div class="row">
-             <p class="main col-xs-3">University of Tennessee Knoxville</p>
-             <p class="main col-xs-offset-6 col-xs-3">August 2014 - Current</p>
-             <p class="sub col-xs-3">Pursuing Bachelor of Computer Science</p>
-             <p class="sub col-xs-offset-6 col-xs-3">cumulative gpa: 3.68</p>
+             <p class="main col-xs-6">University of Tennessee Knoxville</p>
+             <p class="main col-xs-6 right">August 2014 - Current</p>
+             <p class="sub col-xs-6">Pursuing Bachelor of Computer Science</p>
+             <p class="sub col-xs-6 right">cumulative gpa: 3.68</p>
            </div>
          </li>
        </ul>
      </div>
 
+     <hr>
+
      <div id="projects">
        <div class="row">
          <p class="section-title"><b>Projects</b></p>
        </div>
-       <ul>
+       <ul class="no-bullet">
          <li>
            <div class="row">
-             <p class="main col-xs-3">Sorting Algorithm Visualizations</p>
-             <p class="main col-xs-offset-6 col-xs-3">January 2016 - May 2016</p>
-             <p class="sub col-xs-3">Team Leader</p>
-             <p class="sub col-xs-offset-6 col-xs-3">http://robertfr0st.github.io/algorithmizer/</p>
+             <p class="main col-xs-6">Sorting Algorithm Visualizations</p>
+             <p class="main col-xs-6 right">January 2016 - May 2016</p>
+             <p class="sub col-xs-6">Team Leader</p>
+             <p class="sub col-xs-6 right">http://robertfr0st.github.io/algorithmizer/</p>
            </div>
 
            <div class="row col-xs-12">
@@ -162,17 +191,19 @@
        </ul>
      </div>
 
+     <hr>
+
      <div id="service">
        <div class="row">
-         <p class="section-title"><b>Service</b></p>
+         <p class="section-title col-xs-12"><b>Service</b></p>
        </div>
-       <ul>
+       <ul class="no-bullet">
          <li>
            <div class="row">
-             <p class="main col-xs-3">Haiti Outreach Program</p>
-             <p class="main col-xs-offset-6 col-xs-3">May 2015 - Current</p>
-             <p class="sub col-xs-3">Volunteer Software Consultant</p>
-             <p class="sub col-xs-offset-6 col-xs-3">http://www.haitioutreachprogram.com/</p>
+             <p class="main col-xs-6">Haiti Outreach Program</p>
+             <p class="main col-xs-6 right">May 2015 - Current</p>
+             <p class="sub col-xs-6">Volunteer Software Consultant</p>
+             <p class="sub col-xs-6 right">http://www.haitioutreachprogram.com/</p>
            </div>
 
            <div class="row col-xs-12">
@@ -186,17 +217,19 @@
        </ul>
      </div>
 
+     <hr>
+
      <div id="work">
        <div class="row">
          <p class="section-title"><b>Experience</b></p>
        </div>
 
-       <ul>
+       <ul class="no-bullet">
          <li>
            <div class="row">
-             <p class="main col-xs-3">Oak Ridge National Laboratory</p>
-             <p class="main col-xs-offset-6 col-xs-3">June 2016 - August 2016</p>
-             <p class="sub col-xs-3">Software Developer Intern</p>
+             <p class="main col-xs-6">Oak Ridge National Laboratory</p>
+             <p class="main col-xs-6 right">June 2016 - August 2016</p>
+             <p class="sub col-xs-6">Software Developer Intern</p>
            </div>
 
            <div class="row col-xs-12">
@@ -209,9 +242,9 @@
 
          <li>
            <div class="row">
-             <p class="main col-xs-3">VortexT Analytics</p>
-             <p class="main col-xs-offset-6 col-xs-3">May 2016 - June 2016</p>
-             <p class="sub col-xs-3">Software Consultant</p>
+             <p class="main col-xs-6">VortexT Analytics</p>
+             <p class="main col-xs-6 right">May 2016 - June 2016</p>
+             <p class="sub col-xs-6">Software Consultant</p>
            </div>
 
            <div class="row col-xs-12">
@@ -223,9 +256,9 @@
 
          <li>
            <div class="row">
-             <p class="main col-xs-3">Professional Project Services, Inc.</p>
-             <p class="main col-xs-offset-6 col-xs-3">May 2014 - August 2014 & December 2014</p>
-             <p class="sub col-xs-3">Software Developer Intern</p>
+             <p class="main col-xs-6">Professional Project Services, Inc.</p>
+             <p class="main col-xs-6 right">May 2014 - August 2014 & December 2014</p>
+             <p class="sub col-xs-6">Software Developer Intern</p>
            </div>
 
            <div class="row col-xs-12">
@@ -237,41 +270,46 @@
        </ul>
      </div>
 
+     <hr>
+
      <div id="awards">
        <div class="row">
-         <p class="section-title"><b>Honors</b></p>
+         <p class="section-title col-xs-12"><b>Honors</b></p>
        </div>
 
-       <ul>
+       <ul class="no-bullet">
          <li>
            <div class="row">
-             <p class="main col-xs-3">Eagle Scout Rank</p>
-             <p class="main col-xs-offset-6 col-xs-3">June 2013</p>
+             <p class="main col-xs-6">Eagle Scout Rank</p>
+             <p class="main col-xs-6 right">June 2013</p>
            </div>
          </li>
        </ul>
      </div>
+
+     <hr>
 
      <div id="reference"> 
        <div class="row">
          <p class="section-title"><b>References</b></p>
        </div>
 
-       <ul>
-         <li>
+       <ul class="no-bullet">
+         <li class="reference">
            <div class="row">
-             <p class="main col-xs-3">Billy Stair</p>
-             <p class="main col-xs-offset-6 col-xs-3">(Committee Chair, Haiti Outreach Program)</p>
-             <p class="main col-xs-3">(865) 310-7833</p>
-             <p class="main col-xs-offset-6 col-xs-3">stairbilly@gmail.com</p>
+             <p class="main col-xs-6">Billy Stair</p>
+             <p class="main col-xs-6 right">(Committee Chair, Haiti Outreach Program)</p>
+             <p class="main col-xs-6">(865) 310-7833</p>
+             <p class="main col-xs-6 right">stairbilly@gmail.com</p>
            </div>
          </li>
 
-         <li>
+         <li class="reference">
            <div class="row">
-             <p class="main col-xs-3">Cameron Presley</p>
-             <p class="main col-xs-offset-6 col-xs-3">(Co-worker, Professional Project Services)</p>
-             <p class="main col-xs-offset-9 col-xs-3">philipcpresley@gmail.com</p>
+             <p class="main col-xs-6">Cameron Presley</p>
+             <p class="main col-xs-6 right">(Co-worker, Professional Project Services)</p>
+             <p class="main col-xs-6"></p>
+             <p class="main col-xs-6 right">philipcpresley@gmail.com</p>
            </div>
          </li>
        </ul>
