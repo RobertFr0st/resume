@@ -33,5 +33,6 @@ defmodule Resume.Router do
     # Add protected routes below
     resources "/skills", SkillController, except: [:show, :index, :update]
     post "/skills/:id", SkillController, :update, as: :skill
+    get "/resume", PdfController, :export
   end
 end
