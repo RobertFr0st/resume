@@ -1,8 +1,13 @@
 defmodule Resume.PdfController do
   use Resume.Web, :controller
 
+  alias Resume.Repo
+
   def export(conn, _) do
-    pdf = Phoenix.View.render_to_string(Resume.PdfView, "pdf.html", changeset: %{})
+
+    user = Coherence.current_user(conn) |> Repo.preload([:skills])
+
+    pdf = Phoenix.View.render_to_string(Resume.PdfView, "pdf.html", user: user)
       |> PdfGenerator.generate_binary!
 
     download(conn, pdf)

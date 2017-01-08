@@ -17,6 +17,22 @@
           <div class="col-sm-offset-3 col-sm-6">
             <h1>ResuGen</h1>
             <p>Hi I'm Nick. This app keeps track of all my resume worthy skills to easily generate resumes. Sign up to do the same!</p>
+
+
+<h3>Show Skills</h3>
+<ol>
+  <%= for skill <- @user.skills  do %>
+    <li>
+      <ul>
+        <li><%= skill.name %></li>
+        <li><%= skill.category %></li>
+        <li><%= skill.start_date %></li>
+        <li><%= skill.end_date %></li>
+        <li><%= skill.description %></li>
+      </ul>
+    </li>
+  <% end %>
+</ol>
           </div>
         </div>
       </main>
