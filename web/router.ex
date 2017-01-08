@@ -23,7 +23,7 @@ defmodule Resume.Router do
   scope "/", Resume do
     pipe_through :browser
     coherence_routes
-    # Add public routes below
+    # Add public routes below 
     get "/", PageController, :index
   end
 
