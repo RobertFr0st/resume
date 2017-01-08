@@ -77,6 +77,10 @@
       .reference {
         margin-bottom: 10px;
       }
+
+      hr {
+        border-top: 1px solid black;
+      }
     </style>
 
     <title>ResuGen</title>
