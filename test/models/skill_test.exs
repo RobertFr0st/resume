@@ -3,7 +3,7 @@ defmodule Resume.SkillTest do
 
   alias Resume.Skill
 
-  @valid_attrs %{category: "some content", description: "some content", end_date: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, name: "some content", start_date: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}}
+  @valid_attrs %{name: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
