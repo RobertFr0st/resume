@@ -3,10 +3,6 @@ defmodule Resume.Skill do
 
   schema "skills" do
     field :name, :string
-    field :start_date, Ecto.Date
-    field :end_date, Ecto.Date
-    field :description, :string
-    field :category, :string
     belongs_to :user, Resume.User
 
     timestamps()
@@ -19,9 +15,9 @@ defmodule Resume.Skill do
   """
   def changeset(skill, params \\ %{}) do
 
-    cast(skill, params, [:category, :description, :end_date, :name, :start_date])
+    cast(skill, params, [:name])
     |> cast_assoc(:user)
-    |> validate_required([:name, :start_date, :end_date, :description, :category])
+    |> validate_required([:name])
     |> assoc_constraint(:user)
   end
 end
