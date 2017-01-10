@@ -17,3 +17,18 @@ config :resume, Resume.Repo,
   database: "resume_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# %% Coherence Configuration %%   Don't remove this line
+config :coherence,
+  user_schema: Resume.User,
+  repo: Resume.Repo,
+  module: Resume,
+  logged_out_url: "/",
+  email_from_name: "Bob Ross",
+  email_from_email: "example@example.com",
+  opts: [:authenticatable, :recoverable, :lockable, :trackable, :unlockable_with_token, :invitable, :registerable]
+
+config :coherence, Resume.Coherence.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: "wow"
+# %% End Coherence Configuration %%
