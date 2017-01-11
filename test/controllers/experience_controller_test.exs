@@ -2,8 +2,12 @@ defmodule Resume.ExperienceControllerTest do
   use Resume.ConnCase
 
   alias Resume.Experience
+
+import Plug.Conn
   @valid_attrs %{category: "some content", from: %{day: 17, month: 4, year: 2010}, organization: "some content", position: "some content", to: %{day: 17, month: 4, year: 2010}}
   @invalid_attrs %{}
+
+  #setup tests via setting up user object on test db as a seed and log in here in setup
 
   test "renders form for new resources", %{conn: conn} do
     conn = get conn, experience_path(conn, :new)
