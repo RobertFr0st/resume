@@ -6,7 +6,7 @@ defmodule Resume.SkillTest do
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}
   @invalid_short_name %{name: ""}
-  @invalid_long_name %{name: "WWWWWWWWWWWWWWWWWWWWW"}
+  @invalid_long_name %{name: "................."}
 
   test "changeset with valid attributes" do
     changeset = Skill.changeset(%Skill{}, @valid_attrs)

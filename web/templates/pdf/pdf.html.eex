@@ -120,7 +120,7 @@
 
          <% {c1,c2,c3,c4} = skill_columns(@user.skills) %>
 
-         <div class="col-xs-offset-2 col-xs-2">
+         <div class="col-xs-3">
            <ul class="no-bullet">
              <%= for skill <- c1  do %>
                <li><%= skill.name %></li>
@@ -128,7 +128,7 @@
            </ul>
          </div>
 
-         <div class="col-xs-2">
+         <div class="col-xs-3">
            <ul class="no-bullet">
              <%= for skill <- c2  do %>
                <li><%= skill.name %></li>
@@ -136,7 +136,7 @@
            </ul>
          </div>
 
-         <div class="col-xs-2">
+         <div class="col-xs-3">
            <ul class="no-bullet">
              <%= for skill <- c3  do %>
                <li><%= skill.name %></li>
@@ -144,7 +144,7 @@
            </ul>
          </div>
 
-         <div class="col-xs-2">
+         <div class="col-xs-3">
            <ul class="no-bullet">
              <%= for skill <- c4  do %>
                <li><%= skill.name %></li>

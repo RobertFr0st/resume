@@ -18,7 +18,7 @@ defmodule Resume.Skill do
     cast(skill, params, [:name])
     |> cast_assoc(:user)
     |> validate_required([:name])
-    |> validate_length(:name, min: 1, max: 20)
+    |> validate_length(:name, min: 1, max: 16)
     |> assoc_constraint(:user)
   end
 end
