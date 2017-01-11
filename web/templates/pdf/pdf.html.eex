@@ -117,40 +117,40 @@
 
      <div id="skill" class="row">
        <p class="section-title"><b>Skills</b></p>
+
+         <% {c1,c2,c3,c4} = skill_columns(@user.skills) %>
+
          <div class="col-xs-offset-2 col-xs-2">
-         <ul class="no-bullet">
-           <li>Bootstrap</li>
-           <li>HTML and CSS</li>
-           <li>Git</li>
-         </ul>
+           <ul class="no-bullet">
+             <%= for skill <- c1  do %>
+               <li><%= skill.name %></li>
+             <%= end %>
+           </ul>
          </div>
 
          <div class="col-xs-2">
-         <ul class="no-bullet">
-           <li>C</li>
-           <li>C#</li>
-           <li>C++</li>
-           <li>Ruby</li>
-         </ul>
+           <ul class="no-bullet">
+             <%= for skill <- c2  do %>
+               <li><%= skill.name %></li>
+             <%= end %>
+           </ul>
          </div>
 
          <div class="col-xs-2">
-         <ul class="no-bullet">
-           <li>Elixir</li>
-           <li>Erlang</li>
-           <li>Phoenix</li>
-           <li>Ruby on Rails</li>
-         </ul>
+           <ul class="no-bullet">
+             <%= for skill <- c3  do %>
+               <li><%= skill.name %></li>
+             <%= end %>
+           </ul>
          </div>
 
          <div class="col-xs-2">
-         <ul class="no-bullet">
-           <li>Java</li>
-           <li>Javascript</li>
-           <li>D3</li>
-           <li>SQL</li>
-        </ul>
-        </div>
+           <ul class="no-bullet">
+             <%= for skill <- c4  do %>
+               <li><%= skill.name %></li>
+             <%= end %>
+           </ul>
+         </div>
      </div>
 
      <hr>
@@ -318,22 +318,6 @@
          </li>
        </ul>
      </div>
-
-
-<!--ol>
-  <%# for skill <- @user.skills  do %>
-    <li>
-      <ul>
-        <li><%#= skill.name %></li>
-        <li><%#= skill.category %></li>
-        <li><%#= skill.start_date %></li>
-        <li><%#= skill.end_date %></li>
-        <li><%#= skill.description %></li>
-      </ul>
-    </li>
-  <%# end %>
-</ol-->
-
     </div> <!-- /container -->
   </body>
 </html>

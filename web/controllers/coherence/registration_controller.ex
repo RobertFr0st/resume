@@ -14,6 +14,7 @@ defmodule Resume.Coherence.RegistrationController do
   require Logger
   alias Coherence.ControllerHelpers, as: Helpers
   alias Resume.Repo
+  alias Resume.Skill
 
   plug Coherence.RequireLogin when action in ~w(show edit update delete)a
   plug Coherence.ValidateOption, :registerable
@@ -71,7 +72,7 @@ defmodule Resume.Coherence.RegistrationController do
     Modified to also show the skills belonging to the user
   """
   def show(conn, _) do
-    user = Coherence.current_user(conn) |> Repo.preload([:skills])
+    user = Coherence.current_user(conn) |> preload_resume
     render(conn, "show.html", user: user)
   end
 
@@ -81,7 +82,7 @@ defmodule Resume.Coherence.RegistrationController do
     Controller implimented for completeness
   """
   def index(conn, _) do
-    users = User |> Repo.all |> Repo.preload([:skills])
+    users = User |> Repo.all |> preload_resume
     render(conn, "index.html", users: users)
   end
 
@@ -119,5 +120,12 @@ defmodule Resume.Coherence.RegistrationController do
     conn = Coherence.SessionController.delete(conn)
     Config.repo.delete! user
     redirect_to(conn, :registration_delete, params)
+  end
+
+  @doc """
+  Preloads all the models the user owns
+  """
+  def preload_resume(users) do
+    users |> Repo.preload(skills: from(s in Skill, order_by: s.name))
   end
 end
