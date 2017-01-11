@@ -1,0 +1,6 @@
+<h2>New experience</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: experience_path(@conn, :create) %>
+
+<%= link "Back", to: registration_path(@conn, :show) %>
