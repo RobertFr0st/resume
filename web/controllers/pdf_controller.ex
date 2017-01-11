@@ -1,7 +1,6 @@
 defmodule Resume.PdfController do
   use Resume.Web, :controller
 
-  alias Resume.Repo
   alias Resume.Coherence.RegistrationController, as: User
 
   def export(conn, _) do
