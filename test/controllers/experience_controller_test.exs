@@ -3,7 +3,6 @@ defmodule Resume.ExperienceControllerTest do
 
   alias Resume.Experience
 
-import Plug.Conn
   @valid_attrs %{category: "some content", from: %{day: 17, month: 4, year: 2010}, organization: "some content", position: "some content", to: %{day: 17, month: 4, year: 2010}}
   @invalid_attrs %{}
 

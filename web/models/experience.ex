@@ -18,5 +18,6 @@ defmodule Resume.Experience do
     struct
     |> cast(params, [:category, :organization, :position, :from, :to])
     |> validate_required([:category, :organization, :position, :from, :to])
+    |> validate_inclusion(:category, ["Work", "Volunteer", "Project"])
   end
 end
