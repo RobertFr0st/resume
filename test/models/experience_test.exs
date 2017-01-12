@@ -7,6 +7,9 @@ defmodule Resume.ExperienceTest do
 
   @valid_category %{category: "Work", from: %{day: 17, month: 4, year: 2010}, organization: "some content", position: "some content", to: %{day: 17, month: 4, year: 2010}}
 
+
+  @invalid_dates %{category: "test", from: %{day: 17, month: 4, year: 2011}, organization: "some content", position: "some content", to: %{day: 17, month: 4, year: 2010}}
+
   @invalid_category %{category: "test", from: %{day: 17, month: 4, year: 2010}, organization: "some content", position: "some content", to: %{day: 17, month: 4, year: 2010}}
   @invalid_attrs %{}
 
@@ -27,6 +30,11 @@ defmodule Resume.ExperienceTest do
 
   test "invalid catagory passed, test" do
     changeset = Experience.changeset(%Experience{}, @invalid_category)
+    refute changeset.valid?
+  end
+
+  test "invalid to date past, is in the future" do
+    changeset = Experience.changeset(%Experience{}, @invalid_dates)
     refute changeset.valid?
   end
 end

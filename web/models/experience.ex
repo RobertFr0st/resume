@@ -49,15 +49,17 @@ defmodule Resume.Experience do
   end 
 
   def validate_first_date_before_second_date(%{changes: changes}=changeset, from, to) do
-    if(from_date = changes[from] && to_date = changes[to]) do
-      if Ecto.Date.compare(from_date, to_date) == :lt do
+    cond do
+      changes[from] == nil -> 
         changeset
-        |> add_error(field, "From is before To")
-      else
+        |> add_error(from, "From date is nil")
+      changes[to] == nil ->
         changeset
-      end
-    else
-      changeset
+        |> add_error(to, "To date is nil")
+      Ecto.Date.compare(changes[from], changes[to]) == :lt ->
+        changeset
+        |> add_error(from, "From is before To")
+      true -> changeset
     end
   end
 end
