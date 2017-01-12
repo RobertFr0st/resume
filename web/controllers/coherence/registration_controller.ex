@@ -15,6 +15,7 @@ defmodule Resume.Coherence.RegistrationController do
   alias Coherence.ControllerHelpers, as: Helpers
   alias Resume.Repo
   alias Resume.Skill
+  alias Resume.Experience
 
   plug Coherence.RequireLogin when action in ~w(show edit update delete)a
   plug Coherence.ValidateOption, :registerable
@@ -126,6 +127,8 @@ defmodule Resume.Coherence.RegistrationController do
   Preloads all the models the user owns
   """
   def preload_resume(users) do
-    users |> Repo.preload(skills: from(s in Skill, order_by: s.name))
+    users
+    |> Repo.preload(skills: from(s in Skill, order_by: s.name))
+    |> Repo.preload(skills: from(e in Experience, order_by: [desc: e.to]))
   end
 end
