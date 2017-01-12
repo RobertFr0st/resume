@@ -8,6 +8,7 @@ defmodule Resume.User do
     coherence_schema
 
     has_many :skills, Resume.Skill
+    has_many :experiences, Resume.Experience
     timestamps
   end
 
