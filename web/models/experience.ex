@@ -14,6 +14,9 @@ defmodule Resume.Experience do
 
   @doc """
   Builds a changeset based on the `struct` and `params`.
+
+  #write date tests
+  #write position and category string constraints + tests
   """
   def changeset(struct, params \\ %{}) do
     struct
@@ -21,6 +24,40 @@ defmodule Resume.Experience do
     |> cast_assoc(:user)
     |> validate_required([:category, :organization, :position, :from, :to])
     |> validate_inclusion(:category, ["Work", "Volunteer", "Project"])
+    |> validate_first_date_before_second_date(:from, :to)
+    |> validate_current_or_past_date(:to)
+    |> validate_current_or_past_date(:from)
     |> assoc_constraint(:user)
+  end
+
+  def validate_current_or_past_date(%{changes: changes}=changeset, field) do
+    if date = changes[field] do
+      do_validate_current_or_past_date(changeset, field, date)
+    else
+      changeset
+    end
+  end
+
+  defp do_validate_current_or_past_date(changeset, field, date) do
+    today = Ecto.Date.utc
+    if Ecto.Date.compare(today, date) == :lt do
+      changeset
+      |> add_error(field, "Date in the future")
+    else
+      changeset
+    end
+  end 
+
+  def validate_first_date_before_second_date(%{changes: changes}=changeset, from, to) do
+    if(from_date = changes[from] && to_date = changes[to]) do
+      if Ecto.Date.compare(from_date, to_date) == :lt do
+        changeset
+        |> add_error(field, "From is before To")
+      else
+        changeset
+      end
+    else
+      changeset
+    end
   end
 end
