@@ -32,3 +32,21 @@
     </li>
   <% end %>
 </ol>
+
+
+<h3>Show Experience</h3>
+<ol>
+  <%= for exp <- @user.experiences  do %>
+    <li>
+      <ul>
+        <li><%= exp.category %></li>
+        <li><%= exp.organization %></li>
+        <li><%= exp.position %></li>
+        <li><%= exp.from %></li>
+        <li><%= exp.to %></li>
+        <%= link "Edit", to: experience_path(@conn, :edit, exp.id) %>
+        <%= link "Delete", to: experience_path(@conn, :delete, exp.id), method: :delete, data: [confirm: "Are you sure?"] %>
+      </ul>
+    </li>
+  <% end %>
+</ol>

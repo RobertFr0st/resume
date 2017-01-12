@@ -18,7 +18,10 @@ defmodule Resume.ExperienceController do
   end
 
   def create(conn, %{"experience" => experience_params}) do
-    changeset = Experience.changeset(%Experience{}, experience_params)
+
+    changeset = 
+      build_assoc(conn.assigns.current_user, :experiences)
+      |> Experience.changeset(experience_params)
 
     case Repo.insert(changeset) do
       {:ok, _experience} ->

@@ -56,10 +56,11 @@ defmodule Resume.Experience do
       changes[to] == nil ->
         changeset
         |> add_error(to, "To date is nil")
-      Ecto.Date.compare(changes[from], changes[to]) == :lt ->
+      Ecto.Date.compare(changes[from], changes[to]) == :gt ->
         changeset
-        |> add_error(from, "From is before To")
-      true -> changeset
+        |> add_error(from, "From is after To")
+      true ->
+        changeset
     end
   end
 end

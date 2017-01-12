@@ -129,6 +129,6 @@ defmodule Resume.Coherence.RegistrationController do
   def preload_resume(users) do
     users
     |> Repo.preload(skills: from(s in Skill, order_by: s.name))
-    |> Repo.preload(skills: from(e in Experience, order_by: [desc: e.to]))
+    |> Repo.preload(experiences: from(e in Experience, order_by: [desc: e.to]))
   end
 end
