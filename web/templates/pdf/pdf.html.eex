@@ -173,25 +173,27 @@
 
      <hr>
 
+     <% {work, volunteer, project} = experience_rows(@user.experiences) %>
      <div id="projects">
        <div class="row">
          <p class="section-title"><b>Projects</b></p>
        </div>
        <ul class="no-bullet">
-         <li>
-           <div class="row">
-             <p class="main col-xs-6">Sorting Algorithm Visualizations</p>
-             <p class="main col-xs-6 right">January 2016 - May 2016</p>
-             <p class="sub col-xs-6">Team Leader</p>
-             <p class="sub col-xs-6 right">http://robertfr0st.github.io/algorithmizer/</p>
-           </div>
+         <%= for exp <- project  do %>
+           <li>
+             <div class="row">
+               <p class="main col-xs-6"><%= exp.organization %></p>
+               <p class="main col-xs-6 right"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+               <p class="sub col-xs-6"><%= exp.position %></p>
+             </div>
 
-           <div class="row col-xs-12">
+           <!--<div class="row col-xs-12">
              <ul>
                <li class="description">Lead team of three peers to successful completion of educational website.</li>
              </ul>
-           </div>
-         </li>
+           </div>-->
+           </li>
+         <%= end %>
        </ul>
      </div>
 
@@ -202,22 +204,15 @@
          <p class="section-title col-xs-12"><b>Service</b></p>
        </div>
        <ul class="no-bullet">
-         <li>
-           <div class="row">
-             <p class="main col-xs-6">Haiti Outreach Program</p>
-             <p class="main col-xs-6 right">May 2015 - Current</p>
-             <p class="sub col-xs-6">Volunteer Software Consultant</p>
-             <p class="sub col-xs-6 right">http://www.haitioutreachprogram.com/</p>
-           </div>
-
-           <div class="row col-xs-12">
-             <ul>
-               <li class="description">Designed company website and migrated from PHP stack to Rails stack.</li> 
-               <li class="description">Increased fundraiser revenue by $10,000 through online donation.</li>
-               <li class="description">Team as a whole increased fundraiser revenue from $45,000 to $65,000.</li>
-             </ul>
-           </div>
-         </li>
+         <%= for exp <- volunteer  do %>
+           <li>
+             <div class="row">
+               <p class="main col-xs-6"><%= exp.organization %></p>
+               <p class="main col-xs-6 right"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+               <p class="sub col-xs-6"><%= exp.position %></p>
+             </div>
+           </li>
+         <%= end %>
        </ul>
      </div>
 
@@ -229,48 +224,15 @@
        </div>
 
        <ul class="no-bullet">
-         <li>
-           <div class="row">
-             <p class="main col-xs-6">Oak Ridge National Laboratory</p>
-             <p class="main col-xs-6 right">June 2016 - August 2016</p>
-             <p class="sub col-xs-6">Software Developer Intern</p>
-           </div>
-
-           <div class="row col-xs-12">
-             <ul>
-               <li class="description">Visualized ORNL's research output with D3 to guide leadership decisions.</li> 
-               <li class="description">Designed single page layout interactive administrator dashboard.</li>
-             </ul>
-           </div>
-         </li>
-
-         <li>
-           <div class="row">
-             <p class="main col-xs-6">VortexT Analytics</p>
-             <p class="main col-xs-6 right">May 2016 - June 2016</p>
-             <p class="sub col-xs-6">Software Consultant</p>
-           </div>
-
-           <div class="row col-xs-12">
-             <ul>
-               <li class="description">Developed and unit tested features for Ruby on Rails application.</li> 
-             </ul>
-           </div>
-         </li>
-
-         <li>
-           <div class="row">
-             <p class="main col-xs-6">Professional Project Services, Inc.</p>
-             <p class="main col-xs-6 right">May 2014 - August 2014 & December 2014</p>
-             <p class="sub col-xs-6">Software Developer Intern</p>
-           </div>
-
-           <div class="row col-xs-12">
-             <ul>
-               <li class="description">Familiarized with Git, Agile Methodology, Test Driven Development, Java, C#, Rails, and SQL.</li> 
-             </ul>
-           </div>
-         </li>
+         <%= for exp <- work  do %>
+           <li>
+             <div class="row">
+               <p class="main col-xs-6"><%= exp.organization %></p>
+               <p class="main col-xs-6 right"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+               <p class="sub col-xs-6"><%= exp.position %></p>
+             </div>
+           </li>
+         <%= end %>
        </ul>
      </div>
 
