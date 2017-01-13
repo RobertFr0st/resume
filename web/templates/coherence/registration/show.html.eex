@@ -87,3 +87,19 @@
     </li>
   <% end %>
 </ol>
+
+<h3>Show References</h3>
+<ol>
+  <%= for ref <- @user.references  do %>
+    <li>
+      <ul>
+        <li><%= ref.name %></li>
+        <li><%= ref.association %></li>
+        <li><%= ref.phone %></li>
+        <li><%= ref.email %></li>
+        <%= link "Edit", to: reference_path(@conn, :edit, ref.id) %>
+        <%= link "Delete", to: reference_path(@conn, :delete, ref.id), method: :delete, data: [confirm: "Are you sure?"] %>
+      </ul>
+    </li>
+  <% end %>
+</ol>

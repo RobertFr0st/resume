@@ -14,6 +14,7 @@ defmodule Resume.User do
     has_many :experiences, Resume.Experience
     has_many :educations, Resume.Education
     has_many :awards, Resume.Award
+    has_many :references, Resume.Reference
     timestamps
   end
 

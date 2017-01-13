@@ -1,0 +1,6 @@
+<h2>New reference</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: reference_path(@conn, :create) %>
+
+<%= link "Back", to: registration_path(@conn, :show) %>

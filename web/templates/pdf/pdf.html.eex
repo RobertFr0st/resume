@@ -266,23 +266,16 @@
        </div>
 
        <ul class="no-bullet">
-         <li class="reference">
-           <div class="row">
-             <p class="main col-xs-6">Billy Stair</p>
-             <p class="main col-xs-6 right">(Committee Chair, Haiti Outreach Program)</p>
-             <p class="main col-xs-6">(865) 310-7833</p>
-             <p class="main col-xs-6 right">stairbilly@gmail.com</p>
-           </div>
-         </li>
-
-         <li class="reference">
-           <div class="row">
-             <p class="main col-xs-6">Cameron Presley</p>
-             <p class="main col-xs-6 right">(Co-worker, Professional Project Services)</p>
-             <p class="main col-xs-6"></p>
-             <p class="main col-xs-6 right">philipcpresley@gmail.com</p>
-           </div>
-         </li>
+         <%= for ref <- @user.references  do %>
+           <li class="reference">
+             <div class="row">
+               <p class="main col-xs-6"><%= ref.name %></p>
+               <p class="main col-xs-6 right"><%= ref.association %></p>
+               <p class="main col-xs-6"><%= ref.phone %></p>
+               <p class="main col-xs-6 right"><%= ref.email %></p>
+             </div>
+           </li>
+         <% end %>
        </ul>
      </div>
     </div> <!-- /container -->
