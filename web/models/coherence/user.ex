@@ -5,6 +5,9 @@ defmodule Resume.User do
   schema "users" do
     field :name, :string
     field :email, :string
+    field :job_title, :string
+    field :phone, :string
+    field :address, :string
     coherence_schema
 
     has_many :skills, Resume.Skill
@@ -16,7 +19,7 @@ defmodule Resume.User do
 
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, [:name, :email] ++ coherence_fields)
+    |> cast(params, [:name, :email, :job_title, :phone, :address] ++ coherence_fields)
     |> validate_required([:name, :email])
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)

@@ -4,6 +4,10 @@
     <strong>Name:</strong>
     <%= @user.name %>
   </li>
+
+   <li><%= @user.job_title %></li>
+   <li><%= @user.phone %></li>
+   <li><%= @user.address %></li>
   <%= unless (login_field = Coherence.Config.login_field) == :email do %>
     <li>
       <strong><%= humanize login_field %></strong>

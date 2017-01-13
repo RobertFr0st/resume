@@ -89,21 +89,21 @@
   <body>
    <div class="container">
      <div id="header" class="row">
-       <p class="name col-xs-12">Nicholas Daniel Kelley</p>
-       <p class="title col-xs-12">Software Developer</p>
+       <p class="name col-xs-12"><%= @user.name %></p>
+       <p class="title col-xs-12"><%= @user.job_title%></p>
      </div>
 
      <hr>
 
      <div id="contact" class="row">
        <div id="email" class="col-xs-3">
-         <p class="email left"><b>Email</b> txy741@vols.utk.edu<p>
+         <p class="email left"><b>Email</b> <%= @user.email%><p>
        </div>
        <div id="phone" class="col-xs-3">
-         <p class="phone left"><b>Phone</b> (931) 801-5977</p>
+         <p class="phone left"><b>Phone</b> <%= @user.phone %></p>
        </div>
        <div id="address" class="col-xs-6">
-         <p class="address left"><b>Address</b> 1118 Walnut Branch Lane, Knoxville TN 37922</p>
+         <p class="address left"><b>Address</b> <%= @user.address %></p>
        </div>
      </div>
 
