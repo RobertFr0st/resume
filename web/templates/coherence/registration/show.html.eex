@@ -50,3 +50,22 @@
     </li>
   <% end %>
 </ol>
+
+
+<h3>Show Experience</h3>
+<ol>
+  <%= for edu <- @user.educations  do %>
+    <li>
+      <ul>
+        <li><%= edu.organization %></li>
+        <li><%= edu.status %></li>
+        <li><%= edu.degree %></li>
+        <li><%= edu.gpa %></li>
+        <li><%= edu.from %></li>
+        <li><%= edu.to %></li>
+        <%= link "Edit", to: education_path(@conn, :edit, edu.id) %>
+        <%= link "Delete", to: education_path(@conn, :delete, edu.id), method: :delete, data: [confirm: "Are you sure?"] %>
+      </ul>
+    </li>
+  <% end %>
+</ol>

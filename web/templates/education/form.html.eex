@@ -1,0 +1,47 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :organization, class: "control-label" %>
+    <%= text_input f, :organization, class: "form-control" %>
+    <%= error_tag f, :organization %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :status, class: "control-label" %>
+    <%= select f, :status, ["Pursuing", "Earned"], class: "form-control" %>
+    <%= error_tag f, :status %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :degree, class: "control-label" %>
+    <%= text_input f, :degree, class: "form-control" %>
+    <%= error_tag f, :degree %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :gpa, class: "control-label" %>
+    <%= number_input f, :gpa, step: "any", class: "form-control" %>
+    <%= error_tag f, :gpa %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :from, class: "control-label" %>
+    <%= date_select f, :from, year: [options: (DateTime.utc_now.year - 100)..DateTime.utc_now.year] %>
+    <%= error_tag f, :from %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :to, class: "control-label" %>
+    <%= date_select f, :to , year: [options: (DateTime.utc_now.year - 100)..DateTime.utc_now.year] %>
+    <%= error_tag f, :to %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

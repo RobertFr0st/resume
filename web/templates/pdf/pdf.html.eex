@@ -160,14 +160,17 @@
          <p class="section-title"><b>Education</b></p>
        </div>
          <ul class="no-bullet">
+
+         <%= for edu <- @user.educations  do %>
          <li>
            <div class="row">
-             <p class="main col-xs-6">University of Tennessee Knoxville</p>
-             <p class="main col-xs-6 right">August 2014 - Current</p>
-             <p class="sub col-xs-6">Pursuing Bachelor of Computer Science</p>
-             <p class="sub col-xs-6 right">cumulative gpa: 3.68</p>
+             <p class="main col-xs-6"><%= edu.organization %></p>
+             <p class="main col-xs-6 right"><%= english_date(edu.from) %> - <%= english_date(edu.to) %></p>
+             <p class="sub col-xs-6"><%= edu.status %> <%= edu.degree %></p>
+             <p class="sub col-xs-6 right">cumulative gpa: <%= Float.round(edu.gpa, 2) %></p>
            </div>
          </li>
+         <%= end %>
        </ul>
      </div>
 

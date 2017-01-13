@@ -30,8 +30,14 @@
           <ul class="nav navbar-nav navbar-right">
             <%= if Coherence.logged_in?(@conn) do %>
               <li><%= link "Resume", to: pdf_path(@conn, :export) %></li>
-              <li><%= link "New Skill", to: skill_path(@conn, :new) %></li>
-              <li><%= link "New Experience", to: experience_path(@conn, :new) %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link "Skill", to: skill_path(@conn, :new) %></li>
+                  <li><%= link "Experience", to: experience_path(@conn, :new) %></li>
+                  <li><%= link "Education", to: education_path(@conn, :new) %></li>
+                </ul>
+              </li>
               <li><%= link "Show", to: registration_path(@conn, :show) %></li>
               <li><%= link "Edit", to: registration_path(@conn, :edit) %></li>
               <li class="navbar-form">

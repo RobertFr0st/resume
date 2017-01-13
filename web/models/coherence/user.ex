@@ -9,6 +9,7 @@ defmodule Resume.User do
 
     has_many :skills, Resume.Skill
     has_many :experiences, Resume.Experience
+    has_many :educations, Resume.Education
     timestamps
   end
 
