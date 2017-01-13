@@ -190,11 +190,21 @@
                <p class="sub col-xs-6"><%= exp.position %></p>
              </div>
 
-           <!--<div class="row col-xs-12">
+           <div class="row col-xs-12">
              <ul>
-               <li class="description">Lead team of three peers to successful completion of educational website.</li>
+               <% unless exp.description_one == nil do %>
+               <li class="description"><%= exp.description_one %></li>
+               <% end %>
+
+               <% unless exp.description_two == nil do %>
+               <li class="description"><%= exp.description_two %></li>
+               <% end %>
+
+               <% unless exp.description_three == nil do %>
+               <li class="description"><%= exp.description_three %></li>
+               <% end %>
              </ul>
-           </div>-->
+           </div>
            </li>
          <%= end %>
        </ul>
@@ -214,6 +224,22 @@
                <p class="main col-xs-6 right"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
                <p class="sub col-xs-6"><%= exp.position %></p>
              </div>
+
+           <div class="row col-xs-12">
+             <ul>
+               <% unless exp.description_one == nil do %>
+               <li class="description"><%= exp.description_one %></li>
+               <% end %>
+
+               <% unless exp.description_two == nil do %>
+               <li class="description"><%= exp.description_two %></li>
+               <% end %>
+
+               <% unless exp.description_three == nil do %>
+               <li class="description"><%= exp.description_three %></li>
+               <% end %>
+             </ul>
+           </div>
            </li>
          <%= end %>
        </ul>
@@ -234,6 +260,22 @@
                <p class="main col-xs-6 right"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
                <p class="sub col-xs-6"><%= exp.position %></p>
              </div>
+
+           <div class="row col-xs-12">
+             <ul>
+               <% unless exp.description_one == nil do %>
+               <li class="description"><%= exp.description_one %></li>
+               <% end %>
+
+               <% unless exp.description_two == nil do %>
+               <li class="description"><%= exp.description_two %></li>
+               <% end %>
+
+               <% unless exp.description_three == nil do %>
+               <li class="description"><%= exp.description_three %></li>
+               <% end %>
+             </ul>
+           </div>
            </li>
          <%= end %>
        </ul>

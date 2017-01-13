@@ -36,6 +36,24 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :description_one, class: "control-label" %>
+    <%= text_input f, :description_one, class: "form-control" %>
+    <%= error_tag f, :description_one %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :description_two, class: "control-label" %>
+    <%= text_input f, :description_two, class: "form-control" %>
+    <%= error_tag f, :description_two %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :description_three, class: "control-label" %>
+    <%= text_input f, :description_three, class: "form-control" %>
+    <%= error_tag f, :description_three %>
+  </div>
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

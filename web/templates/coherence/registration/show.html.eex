@@ -48,6 +48,19 @@
         <li><%= exp.position %></li>
         <li><%= exp.from %></li>
         <li><%= exp.to %></li>
+
+        <% unless exp.description_one == nil do %>
+          <li><%= exp.description_one %></li>
+        <% end %>
+
+        <% unless exp.description_two == nil do %>
+          <li><%= exp.description_two %></li>
+        <% end %>
+
+        <% unless exp.description_three == nil do %>
+          <li><%= exp.description_three %></li>
+        <% end %>
+
         <%= link "Edit", to: experience_path(@conn, :edit, exp.id) %>
         <%= link "Delete", to: experience_path(@conn, :delete, exp.id), method: :delete, data: [confirm: "Are you sure?"] %>
       </ul>

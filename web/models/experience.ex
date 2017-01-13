@@ -5,6 +5,9 @@ defmodule Resume.Experience do
     field :category, :string
     field :organization, :string
     field :position, :string
+    field :description_one, :string
+    field :description_two, :string
+    field :description_three, :string
     field :from, Ecto.Date
     field :to, Ecto.Date
     belongs_to :user, Resume.User
@@ -20,7 +23,7 @@ defmodule Resume.Experience do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:category, :organization, :position, :from, :to])
+    |> cast(params, [:category, :organization, :position, :from, :to, :description_one, :description_two, :description_three])
     |> cast_assoc(:user)
     |> validate_required([:category, :organization, :position, :from, :to])
     |> validate_inclusion(:category, ["Work", "Volunteer", "Project"])
