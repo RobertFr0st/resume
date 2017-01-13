@@ -35,6 +35,7 @@ defmodule Resume.Router do
     post "/skills/:id", SkillController, :update, as: :skill
     resources "/experiences", ExperienceController, except: [:show, :index]
     resources "/education", EducationController, except: [:show, :index]
+    resources "/award", AwardController, except: [:show, :index]
     get "/resume", PdfController, :export
   end
 end

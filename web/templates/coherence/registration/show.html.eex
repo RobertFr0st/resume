@@ -52,7 +52,7 @@
 </ol>
 
 
-<h3>Show Experience</h3>
+<h3>Show Education</h3>
 <ol>
   <%= for edu <- @user.educations  do %>
     <li>
@@ -65,6 +65,20 @@
         <li><%= edu.to %></li>
         <%= link "Edit", to: education_path(@conn, :edit, edu.id) %>
         <%= link "Delete", to: education_path(@conn, :delete, edu.id), method: :delete, data: [confirm: "Are you sure?"] %>
+      </ul>
+    </li>
+  <% end %>
+</ol>
+
+<h3>Show Award</h3>
+<ol>
+  <%= for aw <- @user.awards  do %>
+    <li>
+      <ul>
+        <li><%= aw.title %></li>
+        <li><%= aw.on %></li>
+        <%= link "Edit", to: award_path(@conn, :edit, aw.id) %>
+        <%= link "Delete", to: award_path(@conn, :delete, aw.id), method: :delete, data: [confirm: "Are you sure?"] %>
       </ul>
     </li>
   <% end %>

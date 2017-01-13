@@ -245,14 +245,16 @@
        <div class="row">
          <p class="section-title col-xs-12"><b>Honors</b></p>
        </div>
-
        <ul class="no-bullet">
+
+         <%= for aw <- @user.awards  do %>
          <li>
            <div class="row">
-             <p class="main col-xs-6">Eagle Scout Rank</p>
-             <p class="main col-xs-6 right">June 2013</p>
+             <p class="main col-xs-6"><%= aw.title %></p>
+             <p class="main col-xs-6 right"><%= english_date(aw.on) %></p>
            </div>
          </li>
+         <%= end %>
        </ul>
      </div>
 

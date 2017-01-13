@@ -36,6 +36,7 @@
                   <li><%= link "Skill", to: skill_path(@conn, :new) %></li>
                   <li><%= link "Experience", to: experience_path(@conn, :new) %></li>
                   <li><%= link "Education", to: education_path(@conn, :new) %></li>
+                  <li><%= link "Award", to: award_path(@conn, :new) %></li>
                 </ul>
               </li>
               <li><%= link "Show", to: registration_path(@conn, :show) %></li>

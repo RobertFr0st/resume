@@ -1,0 +1,6 @@
+<h2>Edit award</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: award_path(@conn, :update, @award) %>
+
+<%= link "Back", to: registration_path(@conn, :show) %>
