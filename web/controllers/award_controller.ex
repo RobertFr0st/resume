@@ -35,7 +35,7 @@ defmodule Resume.AwardController do
       {:ok, award} ->
         conn
         |> put_flash(:info, "Award updated successfully.")
-        |> redirect(to: registration_path(conn, :show, award))
+        |> redirect(to: registration_path(conn, :show))
       {:error, changeset} ->
         render(conn, "edit.html", award: award, changeset: changeset)
     end

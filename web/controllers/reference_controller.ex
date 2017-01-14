@@ -37,7 +37,7 @@ defmodule Resume.ReferenceController do
       {:ok, reference} ->
         conn
         |> put_flash(:info, "Reference updated successfully.")
-        |> redirect(to: registration_path(conn, :show, reference))
+        |> redirect(to: registration_path(conn, :show))
       {:error, changeset} ->
         render(conn, "edit.html", reference: reference, changeset: changeset)
     end

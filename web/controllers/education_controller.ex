@@ -37,7 +37,7 @@ defmodule Resume.EducationController do
       {:ok, education} ->
         conn
         |> put_flash(:info, "Education updated successfully.")
-        |> redirect(to: registration_path(conn, :show, education))
+        |> redirect(to: registration_path(conn, :show))
       {:error, changeset} ->
         render(conn, "edit.html", education: education, changeset: changeset)
     end
