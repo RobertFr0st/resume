@@ -192,17 +192,17 @@
 
            <div class="row col-xs-12">
              <ul>
-               <% unless exp.description_one == nil do %>
+               <%= unless exp.description_one == nil do %>
                <li class="description"><%= exp.description_one %></li>
-               <% end %>
+               <%= end %>
 
-               <% unless exp.description_two == nil do %>
+               <%= unless exp.description_two == nil do %>
                <li class="description"><%= exp.description_two %></li>
-               <% end %>
+               <%= end %>
 
-               <% unless exp.description_three == nil do %>
+               <%= unless exp.description_three == nil do %>
                <li class="description"><%= exp.description_three %></li>
-               <% end %>
+               <%= end %>
              </ul>
            </div>
            </li>
@@ -227,17 +227,17 @@
 
            <div class="row col-xs-12">
              <ul>
-               <% unless exp.description_one == nil do %>
+               <%= unless exp.description_one == nil do %>
                <li class="description"><%= exp.description_one %></li>
-               <% end %>
+               <%= end %>
 
-               <% unless exp.description_two == nil do %>
+               <%= unless exp.description_two == nil do %>
                <li class="description"><%= exp.description_two %></li>
-               <% end %>
+               <%= end %>
 
-               <% unless exp.description_three == nil do %>
+               <%= unless exp.description_three == nil do %>
                <li class="description"><%= exp.description_three %></li>
-               <% end %>
+               <%= end %>
              </ul>
            </div>
            </li>
@@ -263,17 +263,17 @@
 
            <div class="row col-xs-12">
              <ul>
-               <% unless exp.description_one == nil do %>
+               <%= unless exp.description_one == nil do %>
                <li class="description"><%= exp.description_one %></li>
-               <% end %>
+               <%= end %>
 
-               <% unless exp.description_two == nil do %>
+               <%= unless exp.description_two == nil do %>
                <li class="description"><%= exp.description_two %></li>
-               <% end %>
+               <%= end %>
 
-               <% unless exp.description_three == nil do %>
+               <%= unless exp.description_three == nil do %>
                <li class="description"><%= exp.description_three %></li>
-               <% end %>
+               <%= end %>
              </ul>
            </div>
            </li>
@@ -317,7 +317,7 @@
                <p class="main col-xs-6 right"><%= ref.email %></p>
              </div>
            </li>
-         <% end %>
+         <%= end %>
        </ul>
      </div>
     </div> <!-- /container -->
