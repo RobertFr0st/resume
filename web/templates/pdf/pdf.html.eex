@@ -107,13 +107,9 @@
        </div>
      </div>
 
-     <hr>
-
      <div id="objective" class="row">
        <p class="objective left col-xs-12"><b>Objective</b> Seeking Internship for Summer of 2017</p>
      </div>
-
-     <hr>
 
      <div id="skill" class="row">
        <p class="section-title"><b>Skills</b></p>
@@ -153,8 +149,6 @@
          </div>
      </div>
 
-     <hr>
-
      <div id="education">
        <div class="row">
          <p class="section-title"><b>Education</b></p>
@@ -173,8 +167,6 @@
          <%= end %>
        </ul>
      </div>
-
-     <hr>
 
      <% {work, volunteer, project} = experience_rows(@user.experiences) %>
      <div id="projects">
@@ -210,8 +202,6 @@
        </ul>
      </div>
 
-     <hr>
-
      <div id="service">
        <div class="row">
          <p class="section-title col-xs-12"><b>Service</b></p>
@@ -244,8 +234,6 @@
          <%= end %>
        </ul>
      </div>
-
-     <hr>
 
      <div id="work">
        <div class="row">
@@ -281,8 +269,6 @@
        </ul>
      </div>
 
-     <hr>
-
      <div id="awards">
        <div class="row">
          <p class="section-title col-xs-12"><b>Honors</b></p>
@@ -299,8 +285,6 @@
          <%= end %>
        </ul>
      </div>
-
-     <hr>
 
      <div id="reference"> 
        <div class="row">

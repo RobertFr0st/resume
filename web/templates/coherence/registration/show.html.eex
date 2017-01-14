@@ -25,30 +25,28 @@
 <%= link "Delete", to: registration_path(@conn, :delete), method: :delete, data: [confirm: "Are you sure?"] %>
 
 <h3>Show Skills</h3>
-<ol>
+<div class="row">
   <%= for skill <- @user.skills  do %>
-    <li>
-      <ul>
-        <li><%= skill.name %></li>
+      <div class="thumbnail caption col-xs-2">
+        <h3><%= skill.name %></h3>
         <%= link "Edit", to: skill_path(@conn, :edit, skill.id) %>
         <%= link "Delete", to: skill_path(@conn, :delete, skill.id), method: :delete, data: [confirm: "Are you sure?"] %>
-      </ul>
-    </li>
+      </div>
   <% end %>
-</ol>
+</div>
 
 
 <h3>Show Experience</h3>
-<ol>
-  <%= for exp <- @user.experiences  do %>
-    <li>
-      <ul>
-        <li><%= exp.category %></li>
-        <li><%= exp.organization %></li>
-        <li><%= exp.position %></li>
-        <li><%= exp.from %></li>
-        <li><%= exp.to %></li>
 
+<div class="row">
+  <%= for exp <- @user.experiences  do %>
+      <div class="thumbnail caption col-xs-4">
+        <h3><%= exp.category %></h3>
+        <h3><%= exp.organization %></h3>
+        <h6><%= exp.position %></h6>
+        <small><%= exp.from %> - <%= exp.to %></small>
+
+        <ul>
         <%= unless exp.description_one == nil do %>
           <li><%= exp.description_one %></li>
         <%= end %>
@@ -60,19 +58,18 @@
         <%= unless exp.description_three == nil do %>
           <li><%= exp.description_three %></li>
         <%= end %>
+        </ul>
 
         <%= link "Edit", to: experience_path(@conn, :edit, exp.id) %>
         <%= link "Delete", to: experience_path(@conn, :delete, exp.id), method: :delete, data: [confirm: "Are you sure?"] %>
-      </ul>
-    </li>
+      </div>
   <% end %>
-</ol>
-
+</div>
 
 <h3>Show Education</h3>
-<ol>
+<ul class="list-group">
   <%= for edu <- @user.educations  do %>
-    <li>
+    <li class="list-group-item">
       <ul>
         <li><%= edu.organization %></li>
         <li><%= edu.status %></li>
@@ -85,12 +82,12 @@
       </ul>
     </li>
   <% end %>
-</ol>
+</ul>
 
 <h3>Show Award</h3>
-<ol>
+<ul class="list-group">
   <%= for aw <- @user.awards  do %>
-    <li>
+    <li class="list-group-item">
       <ul>
         <li><%= aw.title %></li>
         <li><%= aw.on %></li>
@@ -99,12 +96,12 @@
       </ul>
     </li>
   <% end %>
-</ol>
+</ul>
 
 <h3>Show References</h3>
-<ol>
+<ul class="list-group">
   <%= for ref <- @user.references  do %>
-    <li>
+    <li class="list-group-item">
       <ul>
         <li><%= ref.name %></li>
         <li><%= ref.association %></li>
@@ -115,4 +112,4 @@
       </ul>
     </li>
   <% end %>
-</ol>
+</ul>
