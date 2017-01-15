@@ -29,8 +29,8 @@
   <%= for skill <- @user.skills  do %>
       <div class="thumbnail caption col-xs-2">
         <h3><%= skill.name %></h3>
-        <%= link "Edit", to: skill_path(@conn, :edit, skill.id) %>
-        <%= link "Delete", to: skill_path(@conn, :delete, skill.id), method: :delete, data: [confirm: "Are you sure?"] %>
+        <%= link "", to: skill_path(@conn, :edit, skill.id), class: "glyphicon glyphicon-pencil", alt: "Edit" %>
+        <%= link "", to: skill_path(@conn, :delete, skill.id), method: :delete, data: [confirm: "Are you sure?"], class: "glyphicon glyphicon-remove", alt: "Delete" %>
       </div>
   <% end %>
 </div>
