@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-sm-offset-3 col-sm-6">
+<div class="row justify-content-center">
+  <div class="col-6">
     <h1>ResuGen</h1>
     <p>Hi I'm Nick. This app keeps track of all my resume worthy skills to easily generate resumes. Sign up to do the same!</p>
   </div>

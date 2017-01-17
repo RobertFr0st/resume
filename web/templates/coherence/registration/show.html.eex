@@ -25,7 +25,7 @@
 <%= link "Delete", to: registration_path(@conn, :delete), method: :delete, data: [confirm: "Are you sure?"] %>
 
 <h3>Show Skills</h3>
-<div class="row">
+<div class="row justify-content-center">
   <%= for skill <- @user.skills  do %>
       <div class="thumbnail caption col-xs-2">
         <h3><%= skill.name %></h3>
@@ -38,7 +38,7 @@
 
 <h3>Show Experience</h3>
 
-<div class="row">
+<div class="row justify-content-center">
   <%= for exp <- @user.experiences  do %>
       <div class="thumbnail caption col-xs-4">
         <h3><%= exp.category %></h3>
