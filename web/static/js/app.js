@@ -13,6 +13,13 @@
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
 
+import $ from "jquery"
+import "jquery"
+
+
+// Ugh...
+global.jQuery = require("jquery")  // Needed for tether or bootstrap...
+global.bootstrap = require("bootstrap")
 // Import local files
 //
 // Local files can be imported directly using relative
