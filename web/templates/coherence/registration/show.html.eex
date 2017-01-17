@@ -24,7 +24,7 @@
 <%= link "Edit", to: registration_path(@conn, :edit) %>
 <%= link "Delete", to: registration_path(@conn, :delete), method: :delete, data: [confirm: "Are you sure?"] %>
 
-<h3>Show Skills</h3>
+<h3>Show Resume</h3>
 <div class="row justify-content-center">
   <div class="card-columns">
     <%= for skill <- @user.skills  do %>
@@ -36,72 +36,70 @@
         <%= link "", to: skill_path(@conn, :delete, skill.id), method: :delete, data: [confirm: "Are you sure?"], class: "glyphicon glyphicon-remove", alt: "Delete" %>
       </div>
     <% end %>
-  </div>
 
-  <%= for exp <- @user.experiences  do %>
+    <%= for exp <- @user.experiences  do %>
       <div class="card">
         <div class="card-block">
-        <h3 class="card-title"><%= exp.organization %></h3>
-        <h3><%= exp.category %></h3>
-        <h6><%= exp.position %></h6>
-        <small><%= exp.from %> - <%= exp.to %></small>
+        <h4 class="card-title"><%= exp.organization %></h4>
+        <h6 class="card-text"><%= exp.from %> - <%= exp.to %></h6>
+        <h6 class="card-text"><%= exp.category %></h6>
+        <h6 class="card-text"><%= exp.position %></h6>
+        </div>
 
-          <ul>
+          <ul class="list-group list-group-flush list-inverse">
             <%= unless exp.description_one == nil do %>
-              <li><%= exp.description_one %></li>
+              <li class="list-group-item"><%= exp.description_one %></li>
             <%= end %>
 
             <%= unless exp.description_two == nil do %>
-              <li><%= exp.description_two %></li>
+              <li class="list-group-item"><%= exp.description_two %></li>
             <%= end %>
 
             <%= unless exp.description_three == nil do %>
-              <li><%= exp.description_three %></li>
+              <li class="list-group-item"><%= exp.description_three %></li>
             <%= end %>
           </ul>
-        </div>
 
         <%= link "Edit", to: experience_path(@conn, :edit, exp.id) %>
         <%= link "Delete", to: experience_path(@conn, :delete, exp.id), method: :delete, data: [confirm: "Are you sure?"] %>
       </div>
-  <% end %>
+    <% end %>
 
-  <%= for edu <- @user.educations  do %>
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title"><%= edu.organization %></h4>
-        <p><%= edu.status %></p>
-        <p><%= edu.degree %></p>
-        <p><%= edu.gpa %></p>
-        <p><%= edu.from %></p>
-        <p><%= edu.to %></p>
-        <%= link "Edit", to: education_path(@conn, :edit, edu.id) %>
-        <%= link "Delete", to: education_path(@conn, :delete, edu.id), method: :delete, data: [confirm: "Are you sure?"] %>
+    <%= for edu <- @user.educations  do %>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><%= edu.organization %></h4>
+          <h6 class="card-text"><%= edu.from %> - <%= edu.to %></h6>
+          <h6 class="card-text"><%= edu.status %> <%= edu.degree %></h6>
+          <h6 class="card-text"><%= edu.gpa %></h6>
+          <%= link "Edit", to: education_path(@conn, :edit, edu.id) %>
+          <%= link "Delete", to: education_path(@conn, :delete, edu.id), method: :delete, data: [confirm: "Are you sure?"] %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-  <%= for aw <- @user.awards  do %>
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title"><%= aw.title %></div>
-        <p><%= aw.on %></p>
-        <%= link "Edit", to: award_path(@conn, :edit, aw.id) %>
-        <%= link "Delete", to: award_path(@conn, :delete, aw.id), method: :delete, data: [confirm: "Are you sure?"] %>
+    <%= for aw <- @user.awards  do %>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><%= aw.title %></div>
+          <h6 class="card-text"><%= aw.on %></h6>
+          <%= link "Edit", to: award_path(@conn, :edit, aw.id) %>
+          <%= link "Delete", to: award_path(@conn, :delete, aw.id), method: :delete, data: [confirm: "Are you sure?"] %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-  <%= for ref <- @user.references  do %>
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title"><%= ref.name %></h4>
-        <p><%= ref.association %></p>
-        <p><%= ref.phone %></p>
-        <p><%= ref.email %></p>
-        <%= link "Edit", to: reference_path(@conn, :edit, ref.id) %>
-        <%= link "Delete", to: reference_path(@conn, :delete, ref.id), method: :delete, data: [confirm: "Are you sure?"] %>
+    <%= for ref <- @user.references  do %>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><%= ref.name %></h4>
+          <h6 class="card-text"><%= ref.association %></h6>
+          <h6 class="card-text"><%= ref.phone %></h6>
+          <h6 class="card-text"><%= ref.email %></h6>
+          <%= link "Edit", to: reference_path(@conn, :edit, ref.id) %>
+          <%= link "Delete", to: reference_path(@conn, :delete, ref.id), method: :delete, data: [confirm: "Are you sure?"] %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
