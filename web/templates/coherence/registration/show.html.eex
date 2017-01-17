@@ -21,8 +21,10 @@
   </li>
 </ul>
 
-<%= link "Edit", to: registration_path(@conn, :edit) %>
-<%= link "Delete", to: registration_path(@conn, :delete), method: :delete, data: [confirm: "Are you sure?"] %>
+<div class="btn-group">
+<%= link "Edit", to: registration_path(@conn, :edit), class: "btn" %>
+<%= link "Delete", to: registration_path(@conn, :delete), method: :delete, data: [confirm: "Are you sure?"], class: "btn" %>
+</div>
 
 <h3>Show Resume</h3>
 <div class="row justify-content-center">
@@ -32,8 +34,10 @@
         <div class="card-block">
           <h4 class="card-title"><%= skill.name %></h4>
         </div>
-        <%= link "", to: skill_path(@conn, :edit, skill.id), class: "glyphicon glyphicon-pencil", alt: "Edit" %>
-        <%= link "", to: skill_path(@conn, :delete, skill.id), method: :delete, data: [confirm: "Are you sure?"], class: "glyphicon glyphicon-remove", alt: "Delete" %>
+        <div class="btn-group">
+            <%= link "Edit", to: skill_path(@conn, :edit, skill.id), alt: "Edit", class: "btn" %>
+            <%= link "Delete", to: skill_path(@conn, :delete, skill.id), method: :delete, data: [confirm: "Are you sure?"], alt: "Delete", class: "btn" %>
+        </div>
       </div>
     <% end %>
 
@@ -60,8 +64,11 @@
             <%= end %>
           </ul>
 
-        <%= link "Edit", to: experience_path(@conn, :edit, exp.id) %>
-        <%= link "Delete", to: experience_path(@conn, :delete, exp.id), method: :delete, data: [confirm: "Are you sure?"] %>
+
+        <div class="btn-group">
+          <%= link "Edit", to: experience_path(@conn, :edit, exp.id), class: "btn" %>
+          <%= link "Delete", to: experience_path(@conn, :delete, exp.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn" %>
+        </div>
       </div>
     <% end %>
 
@@ -72,8 +79,8 @@
           <h6 class="card-text"><%= edu.from %> - <%= edu.to %></h6>
           <h6 class="card-text"><%= edu.status %> <%= edu.degree %></h6>
           <h6 class="card-text"><%= edu.gpa %></h6>
-          <%= link "Edit", to: education_path(@conn, :edit, edu.id) %>
-          <%= link "Delete", to: education_path(@conn, :delete, edu.id), method: :delete, data: [confirm: "Are you sure?"] %>
+          <%= link "Edit", to: education_path(@conn, :edit, edu.id), class: "btn" %>
+          <%= link "Delete", to: education_path(@conn, :delete, edu.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn" %>
         </div>
       </div>
     <% end %>
@@ -83,8 +90,11 @@
         <div class="card-block">
           <h4 class="card-title"><%= aw.title %></div>
           <h6 class="card-text"><%= aw.on %></h6>
-          <%= link "Edit", to: award_path(@conn, :edit, aw.id) %>
-          <%= link "Delete", to: award_path(@conn, :delete, aw.id), method: :delete, data: [confirm: "Are you sure?"] %>
+
+          <div class="btn-group">
+            <%= link "Edit", to: award_path(@conn, :edit, aw.id), class: "btn" %>
+            <%= link "Delete", to: award_path(@conn, :delete, aw.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn" %>
+          </div>
         </div>
       </div>
     <% end %>
@@ -96,8 +106,11 @@
           <h6 class="card-text"><%= ref.association %></h6>
           <h6 class="card-text"><%= ref.phone %></h6>
           <h6 class="card-text"><%= ref.email %></h6>
-          <%= link "Edit", to: reference_path(@conn, :edit, ref.id) %>
-          <%= link "Delete", to: reference_path(@conn, :delete, ref.id), method: :delete, data: [confirm: "Are you sure?"] %>
+
+          <div class="btn-group">
+            <%= link "Edit", to: reference_path(@conn, :edit, ref.id), class: "btn" %>
+            <%= link "Delete", to: reference_path(@conn, :delete, ref.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn" %>
+          </div>
         </div>
       </div>
     <% end %>
