@@ -27,7 +27,7 @@
 </div>
 
 <h3>Show Resume</h3>
-<div class="row justify-content-center">
+<div class="row justify-content-left">
   <div class="card-columns">
     <%= for skill <- @user.skills  do %>
       <div class="card">
