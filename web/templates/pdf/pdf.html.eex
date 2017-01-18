@@ -144,8 +144,8 @@
          <%= for edu <- @user.educations  do %>
          <li>
            <div class="row">
-             <p class="col-xs-6 content"><%= edu.organization %></p>
-             <p class="col-xs-6 right content"><%= english_date(edu.from) %> - <%= english_date(edu.to) %></p>
+             <p class="col-xs-8 content"><%= edu.organization %></p>
+             <p class="col-xs-4 right content"><%= english_date(edu.from) %> - <%= english_date(edu.to) %></p>
              <p class="col-xs-6 sub-content"><%= edu.status %> <%= edu.degree %></p>
              <p class="col-xs-6 right sub-content">cumulative gpa: <%= Float.round(edu.gpa, 2) %></p>
            </div>
@@ -163,8 +163,8 @@
          <%= for exp <- project  do %>
            <li>
              <div class="row">
-               <p class="col-xs-6 content"><%= exp.organization %></p>
-               <p class="col-xs-6 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+               <p class="col-xs-8 content"><%= exp.organization %></p>
+               <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
                <p class="col-xs-6 sub-content"><%= exp.position %></p>
              </div>
 
@@ -196,8 +196,8 @@
          <%= for exp <- volunteer  do %>
            <li>
              <div class="row">
-               <p class="col-xs-6 content"><%= exp.organization %></p>
-               <p class="col-xs-6 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+               <p class="col-xs-8 content"><%= exp.organization %></p>
+               <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
                <p class="col-xs-6 sub-content"><%= exp.position %></p>
              </div>
 
@@ -230,8 +230,8 @@
          <%= for exp <- work  do %>
            <li>
              <div class="row">
-               <p class="col-xs-6 content"><%= exp.organization %></p>
-               <p class="col-xs-6 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+               <p class="col-xs-8 content"><%= exp.organization %></p>
+               <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
                <p class="col-xs-6 sub-content"><%= exp.position %></p>
              </div>
 
@@ -264,8 +264,8 @@
          <%= for aw <- @user.awards  do %>
          <li>
            <div class="row">
-             <p class="col-xs-6 content"><%= aw.title %></p>
-             <p class="col-xs-6 right content"><%= english_date(aw.on) %></p>
+             <p class="col-xs-8 content"><%= aw.title %></p>
+             <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
            </div>
          </li>
          <%= end %>
