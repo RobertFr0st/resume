@@ -29,7 +29,11 @@ defmodule Resume.PdfView do
     Default format is (xxx) xxx-xxxx
   """
   def phone_format(phone) do
-    [_, area_code, three_set, four_set] = Regex.run(~r/\(?(\d{3})\)?[-| ]*(\d{3})[-| ]*(\d{4})/, phone)
-    "(#{area_code}) #{three_set}-#{four_set}"
+    if(phone) do
+      [_, area_code, three_set, four_set] = Regex.run(~r/\(?(\d{3})\)?[-| ]*(\d{3})[-| ]*(\d{4})/, phone)
+      "(#{area_code}) #{three_set}-#{four_set}"
+    else
+     ""
+    end
   end
 end
