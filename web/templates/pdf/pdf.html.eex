@@ -90,7 +90,7 @@
          <p class="content left"><b>Email</b> <%= @user.email%><p>
        </div>
        <div id="phone" class="col-xs-6">
-         <p class="content left"><b>Phone</b> <%= @user.phone %></p>
+         <p class="content left"><b>Phone</b> <%= phone_format(@user.phone) %></p>
        </div>
        <div id="address" class="col-xs-12">
          <p class="content left"><b>Address</b> <%= @user.address %></p>
@@ -421,7 +421,7 @@
                   <div class="row">
                     <p class="col-xs-6 content"><%= ref.name %></p>
                     <p class="col-xs-6 right content"><%= ref.association %></p>
-                    <p class="col-xs-6 content"><%= ref.phone %></p>
+                    <p class="col-xs-6 content"><%= phone_format(ref.phone) %></p>
                     <p class="col-xs-6 right content"><%= ref.email %></p>
                   </div>
                 </li>
@@ -434,7 +434,7 @@
                   <div class="row">
                     <p class="col-xs-6 content"> <b>References</b> <%= ref.name %></p>
                     <p class="col-xs-6 right content"><%= ref.association %></p>
-                    <p class="col-xs-6 content"><%= ref.phone %></p>
+                    <p class="col-xs-6 content"><%= phone_format(ref.phone) %></p>
                     <p class="col-xs-6 right content"><%= ref.email %></p>
                   </div>
                 </li>

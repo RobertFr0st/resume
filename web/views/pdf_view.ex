@@ -23,4 +23,13 @@ defmodule Resume.PdfView do
     index = String.to_integer(month) - 1
     "#{Enum.at(@months, index)} #{year}"
   end
+
+  @doc """
+    No support for international code as of yet.
+    Default format is (xxx) xxx-xxxx
+  """
+  def phone_format(phone) do
+    [_, area_code, three_set, four_set] = Regex.run(~r/\(?(\d{3})\)?[-| ]*(\d{3})[-| ]*(\d{4})/, phone)
+    "(#{area_code}) #{three_set}-#{four_set}"
+  end
 end
