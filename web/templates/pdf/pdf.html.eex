@@ -67,6 +67,10 @@
         line-height: 1.0;
       }
 
+      .no-break {
+        page-break-inside: avoid;
+      }
+
     </style>
 
     <title>ResuGen</title>
@@ -98,7 +102,7 @@
      </div>
 
      <%= if(length(@user.skills) > 0) do %>
-       <div id="skill" class="row">
+       <div id="skill" class="row no-break">
          <p class="content left col-xs-12"><b>Skills</b></p>
 
          <% {c1,c2,c3,c4} = skill_columns(@user.skills) %>
@@ -146,7 +150,7 @@
           </div>
           <ul class="no-bullet">
             <%= for edu <- @user.educations  do %>
-              <li>
+              <li class="no-break">
                 <div class="row">
                   <p class="col-xs-8 content"><%= edu.organization %></p>
                   <p class="col-xs-4 right content"><%= english_date(edu.from) %> - <%= english_date(edu.to) %></p>
@@ -159,7 +163,7 @@
         <%= else %>
           <ul class="no-bullet">
             <%= for edu <- @user.educations  do %>
-              <li>
+              <li class="no-break">
                 <div class="row">
                   <p class="col-xs-8 content"><b>Education</b> <%= edu.organization %></p>
                   <p class="col-xs-4 right content"><%= english_date(edu.from) %> - <%= english_date(edu.to) %></p>
@@ -183,7 +187,7 @@
         </div>
         <ul class="no-bullet">
           <%= for exp <- project  do %>
-            <li>
+            <li class="no-break">
               <div class="row">
                 <p class="col-xs-8 content"><%= exp.organization %></p>
                 <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
@@ -211,7 +215,7 @@
       <%= else %>
         <ul class="no-bullet">
           <%= for exp <- project  do %>
-            <li>
+            <li class="no-break">
               <div class="row">
                 <p class="col-xs-8 content"><b>Projects</b> <%= exp.organization %></p>
                 <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
@@ -249,7 +253,7 @@
        </div>
        <ul class="no-bullet">
          <%= for exp <- volunteer  do %>
-           <li>
+          <li class="no-break">
              <div class="row">
                <p class="col-xs-8 content"><%= exp.organization %></p>
                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
@@ -277,7 +281,7 @@
       <%= else %>
        <ul class="no-bullet">
          <%= for exp <- volunteer  do %>
-           <li>
+           <li class="no-break">
              <div class="row">
                <p class="col-xs-8 content"><b>Service</b> <%= exp.organization %></p>
                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
@@ -315,7 +319,7 @@
 
         <ul class="no-bullet">
           <%= for exp <- work  do %>
-            <li>
+            <li class="no-break">
               <div class="row">
                 <p class="col-xs-8 content"><%= exp.organization %></p>
                 <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
@@ -343,7 +347,7 @@
       <%= else %>
         <ul class="no-bullet">
           <%= for exp <- work  do %>
-            <li>
+            <li class="no-break">
               <div class="row">
                 <p class="col-xs-8 content"><b>Work</b> <%= exp.organization %></p>
                 <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
@@ -381,7 +385,7 @@
             </div>
             <ul class="no-bullet">
               <%= for aw <- @user.awards  do %>
-                <li>
+                <li class="no-break">
                   <div class="row">
                     <p class="col-xs-8 content"><%= aw.title %></p>
                     <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
@@ -392,7 +396,7 @@
           <%= else %>
             <ul class="no-bullet">
               <%= for aw <- @user.awards  do %>
-                <li>
+                <li class="no-break">
                   <div class="row">
                     <p class="col-xs-8 content"><b>Honors</b> <%= aw.title %></p>
                     <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
@@ -413,7 +417,7 @@
 
             <ul class="no-bullet">
               <%= for ref <- @user.references  do %>
-                <li class="reference">
+                <li class="reference no-break">
                   <div class="row">
                     <p class="col-xs-6 content"><%= ref.name %></p>
                     <p class="col-xs-6 right content"><%= ref.association %></p>
@@ -426,7 +430,7 @@
           <%= else %>
             <ul class="no-bullet">
               <%= for ref <- @user.references  do %>
-                <li class="reference">
+                <li class="reference no-break">
                   <div class="row">
                     <p class="col-xs-6 content"> <b>References</b> <%= ref.name %></p>
                     <p class="col-xs-6 right content"><%= ref.association %></p>
