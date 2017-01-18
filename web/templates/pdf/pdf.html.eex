@@ -97,8 +97,9 @@
        <p class="content left col-xs-12"><b>Objective</b> Seeking Internship for Summer of 2017</p>
      </div>
 
-     <div id="skill" class="row">
-       <p class="content left col-xs-12"><b>Skills</b></p>
+     <%= if(length(@user.skills) > 0) do %>
+       <div id="skill" class="row">
+         <p class="content left col-xs-12"><b>Skills</b></p>
 
          <% {c1,c2,c3,c4} = skill_columns(@user.skills) %>
 
@@ -133,62 +134,116 @@
              <%= end %>
            </ul>
          </div>
-     </div>
-
-     <div id="education">
-       <div class="row">
-         <p class="content left col-xs-12"><b>Education</b></p>
        </div>
-         <ul class="no-bullet">
+     <%= end %>
 
-         <%= for edu <- @user.educations  do %>
-         <li>
-           <div class="row">
-             <p class="col-xs-8 content"><%= edu.organization %></p>
-             <p class="col-xs-4 right content"><%= english_date(edu.from) %> - <%= english_date(edu.to) %></p>
-             <p class="col-xs-6 sub-content"><%= edu.status %> <%= edu.degree %></p>
-             <p class="col-xs-6 right sub-content">cumulative gpa: <%= Float.round(edu.gpa, 2) %></p>
-           </div>
-         </li>
-         <%= end %>
-       </ul>
-     </div>
+    <%= if(length(@user.educations) > 0) do %>
+      <div id="education">
 
-     <% {work, volunteer, project} = experience_rows(@user.experiences) %>
-     <div id="projects">
-       <div class="row">
-         <p class="content left col-xs-12"><b>Projects</b></p>
-       </div>
-       <ul class="no-bullet">
-         <%= for exp <- project  do %>
-           <li>
-             <div class="row">
-               <p class="col-xs-8 content"><%= exp.organization %></p>
-               <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
-               <p class="col-xs-6 sub-content"><%= exp.position %></p>
-             </div>
+        <%= if(length(@user.educations) > 1) do %>
+          <div class="row">
+            <p class="content left col-xs-12"><b>Education</b></p>
+          </div>
+          <ul class="no-bullet">
+            <%= for edu <- @user.educations  do %>
+              <li>
+                <div class="row">
+                  <p class="col-xs-8 content"><%= edu.organization %></p>
+                  <p class="col-xs-4 right content"><%= english_date(edu.from) %> - <%= english_date(edu.to) %></p>
+                  <p class="col-xs-6 sub-content"><%= edu.status %> <%= edu.degree %></p>
+                  <p class="col-xs-6 right sub-content">cumulative gpa: <%= Float.round(edu.gpa, 2) %></p>
+                </div>
+              </li>
+            <%= end %>
+          </ul>
+        <%= else %>
+          <ul class="no-bullet">
+            <%= for edu <- @user.educations  do %>
+              <li>
+                <div class="row">
+                  <p class="col-xs-8 content"><b>Education</b> <%= edu.organization %></p>
+                  <p class="col-xs-4 right content"><%= english_date(edu.from) %> - <%= english_date(edu.to) %></p>
+                  <p class="col-xs-6 sub-content"><%= edu.status %> <%= edu.degree %></p>
+                  <p class="col-xs-6 right sub-content">cumulative gpa: <%= Float.round(edu.gpa, 2) %></p>
+                </div>
+              </li>
+            <%= end %>
+          </ul>
+        <%= end %>
+      </div>
+    <%= end %>
 
-           <div class="row col-xs-12">
-             <ul>
-               <%= unless exp.description_one == nil do %>
-               <li class="sub-content"><%= exp.description_one %></li>
-               <%= end %>
+    <% {work, volunteer, project} = experience_rows(@user.experiences) %>
 
-               <%= unless exp.description_two == nil do %>
-               <li class="sub-content"><%= exp.description_two %></li>
-               <%= end %>
+    <%= if(length(project) > 0) do %>
+    <div id="projects">
+      <%= if(length(project) > 1) do %>
+        <div class="row">
+          <p class="content left col-xs-12"><b>Projects</b></p>
+        </div>
+        <ul class="no-bullet">
+          <%= for exp <- project  do %>
+            <li>
+              <div class="row">
+                <p class="col-xs-8 content"><%= exp.organization %></p>
+                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+                <p class="col-xs-6 sub-content"><%= exp.position %></p>
+              </div>
 
-               <%= unless exp.description_three == nil do %>
-               <li class="sub-content"><%= exp.description_three %></li>
-               <%= end %>
-             </ul>
-           </div>
-           </li>
-         <%= end %>
-       </ul>
-     </div>
+              <div class="row col-xs-12">
+                <ul>
+                  <%= unless exp.description_one == nil do %>
+                    <li class="sub-content"><%= exp.description_one %></li>
+                  <%= end %>
 
-     <div id="service">
+                  <%= unless exp.description_two == nil do %>
+                    <li class="sub-content"><%= exp.description_two %></li>
+                  <%= end %>
+
+                  <%= unless exp.description_three == nil do %>
+                    <li class="sub-content"><%= exp.description_three %></li>
+                  <%= end %>
+                </ul>
+              </div>
+            </li>
+          <%= end %>
+        </ul>
+      <%= else %>
+        <ul class="no-bullet">
+          <%= for exp <- project  do %>
+            <li>
+              <div class="row">
+                <p class="col-xs-8 content"><b>Projects</b> <%= exp.organization %></p>
+                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+                <p class="col-xs-6 sub-content"><%= exp.position %></p>
+              </div>
+
+              <div class="row col-xs-12">
+                <ul>
+                  <%= unless exp.description_one == nil do %>
+                    <li class="sub-content"><%= exp.description_one %></li>
+                  <%= end %>
+
+                  <%= unless exp.description_two == nil do %>
+                    <li class="sub-content"><%= exp.description_two %></li>
+                  <%= end %>
+
+                  <%= unless exp.description_three == nil do %>
+                    <li class="sub-content"><%= exp.description_three %></li>
+                  <%= end %>
+                </ul>
+              </div>
+            </li>
+          <%= end %>
+        </ul>
+      <%= end %>
+    </div>
+    <%= end %>
+
+
+    <%= if(length(volunteer) > 0) do %>
+    <div id="service">
+      <%= if(length(volunteer) > 1) do %>
        <div class="row">
          <p class="content left col-xs-12"><b>Service</b></p>
        </div>
@@ -219,18 +274,12 @@
            </li>
          <%= end %>
        </ul>
-     </div>
-
-     <div id="work">
-       <div class="row">
-         <p class="content left col-xs-12"><b>Work</b></p>
-       </div>
-
+      <%= else %>
        <ul class="no-bullet">
-         <%= for exp <- work  do %>
+         <%= for exp <- volunteer  do %>
            <li>
              <div class="row">
-               <p class="col-xs-8 content"><%= exp.organization %></p>
+               <p class="col-xs-8 content"><b>Service</b> <%= exp.organization %></p>
                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
                <p class="col-xs-6 sub-content"><%= exp.position %></p>
              </div>
@@ -253,43 +302,143 @@
            </li>
          <%= end %>
        </ul>
-     </div>
+      <%= end %>
+    </div>
+    <%= end %>
 
-     <div id="awards">
-       <div class="row">
-         <p class="content left col-xs-12"><b>Honors</b></p>
-       </div>
-       <ul class="no-bullet">
+    <%= if(length(work) > 0) do %>
+    <div id="work">
+      <%= if(length(work) > 1) do %>
+        <div class="row">
+          <p class="content left col-xs-12"><b>Work</b></p>
+        </div>
 
-         <%= for aw <- @user.awards  do %>
-         <li>
-           <div class="row">
-             <p class="col-xs-8 content"><%= aw.title %></p>
-             <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
-           </div>
-         </li>
-         <%= end %>
-       </ul>
-     </div>
+        <ul class="no-bullet">
+          <%= for exp <- work  do %>
+            <li>
+              <div class="row">
+                <p class="col-xs-8 content"><%= exp.organization %></p>
+                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+                <p class="col-xs-6 sub-content"><%= exp.position %></p>
+              </div>
 
-     <div id="reference"> 
-       <div class="row">
-         <p class="content left col-xs-12"><b>References</b></p>
-       </div>
+              <div class="row col-xs-12">
+                <ul>
+                  <%= unless exp.description_one == nil do %>
+                    <li class="sub-content"><%= exp.description_one %></li>
+                  <%= end %>
 
-       <ul class="no-bullet">
-         <%= for ref <- @user.references  do %>
-           <li class="reference">
-             <div class="row">
-               <p class="col-xs-6 content"><%= ref.name %></p>
-               <p class="col-xs-6 right content"><%= ref.association %></p>
-               <p class="col-xs-6 content"><%= ref.phone %></p>
-               <p class="col-xs-6 right content"><%= ref.email %></p>
-             </div>
-           </li>
-         <%= end %>
-       </ul>
-     </div>
+                  <%= unless exp.description_two == nil do %>
+                    <li class="sub-content"><%= exp.description_two %></li>
+                  <%= end %>
+
+                  <%= unless exp.description_three == nil do %>
+                    <li class="sub-content"><%= exp.description_three %></li>
+                  <%= end %>
+                </ul>
+              </div>
+            </li>
+          <%= end %>
+        </ul>
+      <%= else %>
+        <ul class="no-bullet">
+          <%= for exp <- work  do %>
+            <li>
+              <div class="row">
+                <p class="col-xs-8 content"><b>Work</b> <%= exp.organization %></p>
+                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+                <p class="col-xs-6 sub-content"><%= exp.position %></p>
+              </div>
+
+              <div class="row col-xs-12">
+                <ul>
+                  <%= unless exp.description_one == nil do %>
+                    <li class="sub-content"><%= exp.description_one %></li>
+                  <%= end %>
+
+                  <%= unless exp.description_two == nil do %>
+                    <li class="sub-content"><%= exp.description_two %></li>
+                  <%= end %>
+
+                  <%= unless exp.description_three == nil do %>
+                    <li class="sub-content"><%= exp.description_three %></li>
+                  <%= end %>
+                </ul>
+              </div>
+            </li>
+          <%= end %>
+        </ul>
+      <%= end %>
+    </div>
+    <%= end %>
+
+
+      <%= if(length(@user.awards) > 0) do %>
+        <div id="awards">
+          <%= if(length(@user.awards) > 1) do %>
+            <div class="row">
+              <p class="content left col-xs-12"><b>Honors</b></p>
+            </div>
+            <ul class="no-bullet">
+              <%= for aw <- @user.awards  do %>
+                <li>
+                  <div class="row">
+                    <p class="col-xs-8 content"><%= aw.title %></p>
+                    <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
+                  </div>
+                </li>
+              <%= end %>
+            </ul>
+          <%= else %>
+            <ul class="no-bullet">
+              <%= for aw <- @user.awards  do %>
+                <li>
+                  <div class="row">
+                    <p class="col-xs-8 content"><b>Honors</b> <%= aw.title %></p>
+                    <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
+                  </div>
+                </li>
+              <%= end %>
+            </ul>
+          <%= end %>
+        </div>
+      <%= end %>
+
+      <%= if(length(@user.references) > 0) do %>
+        <div id="reference"> 
+          <%= if(length(@user.references) > 1) do %>
+            <div class="row">
+              <p class="content left col-xs-12"><b>References</b></p>
+            </div>
+
+            <ul class="no-bullet">
+              <%= for ref <- @user.references  do %>
+                <li class="reference">
+                  <div class="row">
+                    <p class="col-xs-6 content"><%= ref.name %></p>
+                    <p class="col-xs-6 right content"><%= ref.association %></p>
+                    <p class="col-xs-6 content"><%= ref.phone %></p>
+                    <p class="col-xs-6 right content"><%= ref.email %></p>
+                  </div>
+                </li>
+              <%= end %>
+            </ul>
+          <%= else %>
+            <ul class="no-bullet">
+              <%= for ref <- @user.references  do %>
+                <li class="reference">
+                  <div class="row">
+                    <p class="col-xs-6 content"> <b>References</b> <%= ref.name %></p>
+                    <p class="col-xs-6 right content"><%= ref.association %></p>
+                    <p class="col-xs-6 content"><%= ref.phone %></p>
+                    <p class="col-xs-6 right content"><%= ref.email %></p>
+                  </div>
+                </li>
+              <%= end %>
+            </ul>
+          <%= end %>
+        </div>
+      <%= end %>
     </div> <!-- /container -->
   </body>
 </html>
