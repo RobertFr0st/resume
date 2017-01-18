@@ -79,8 +79,11 @@
           <h6 class="card-text"><%= edu.from %> - <%= edu.to %></h6>
           <h6 class="card-text"><%= edu.status %> <%= edu.degree %></h6>
           <h6 class="card-text"><%= edu.gpa %></h6>
-          <%= link "Edit", to: education_path(@conn, :edit, edu.id), class: "btn" %>
-          <%= link "Delete", to: education_path(@conn, :delete, edu.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn" %>
+
+          <div class="btn-group">
+            <%= link "Edit", to: education_path(@conn, :edit, edu.id), class: "btn" %>
+            <%= link "Delete", to: education_path(@conn, :delete, edu.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn" %>
+          </div>
         </div>
       </div>
     <% end %>
