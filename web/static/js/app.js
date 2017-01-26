@@ -26,3 +26,11 @@ global.bootstrap = require("bootstrap")
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+// Set up our Elm App
+import Elm from './vender/';
+
+const elmDiv = document.querySelector('#elm-container');
+if(elmDiv) {
+  Elm.App.embed(elmDiv);
+}
