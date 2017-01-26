@@ -13,6 +13,12 @@ defmodule Resume.PdfController do
     download(conn, pdf)
   end
 
+  def new(conn, _) do 
+    #if I choose to have a resume model will make export much simpler to impliment
+    #changeset = Resume.changeset(%Resume{})
+    render(conn, "new.html")#, changeset: changeset)
+  end
+
   defp download(conn, pdf) do
     conn
     |> put_resp_content_type("text/pdf")
