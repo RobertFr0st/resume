@@ -12,9 +12,13 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
-
 import $ from "jquery"
 import "jquery"
+
+const elmDiv = document.getElementById('elm-main');
+if (elmDiv) {
+  Elm.Main.embed(elmDiv);
+}
 
 
 // Ugh...
@@ -27,10 +31,8 @@ global.bootstrap = require("bootstrap")
 
 // import socket from "./socket"
 
-// Set up our Elm App
-import Elm from "./elm.js"
-
-let elmDiv = document.querySelector("elm-container");
-if(elmDiv) {
-  Elm.Main.embed(elmDiv);
-}
+// Set up our Elm App, elm auto imports from vendor directory
+//let counterDiv = document.getElementById("counter-app")
+//if (counterDiv !== undefined) {
+//        Elm.Main.embed(counterDiv)
+//}
