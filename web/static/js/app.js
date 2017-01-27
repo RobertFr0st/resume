@@ -28,7 +28,9 @@ global.bootstrap = require("bootstrap")
 // import socket from "./socket"
 
 // Set up our Elm App
-const elmDiv = document.querySelector('#elm-container');
+import Elm from "./elm.js"
+
+let elmDiv = document.querySelector("elm-container");
 if(elmDiv) {
-  Elm.App.embed(elmDiv);
+  Elm.Main.embed(elmDiv);
 }
