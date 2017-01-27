@@ -40,11 +40,12 @@ exports.config = {
     },
     elmBrunch: {
       //
+      executablePath: './node_modules/elm/binwrappers',
       elmFolder: "web/elm/",
       mainModules: [
         'Main.elm'
       ],
-      outputFolder: "../static/js",
+      outputFolder: "../static/vendor",
       outputFile: "elm.js",
       makeParameters: [
         "--warn"
