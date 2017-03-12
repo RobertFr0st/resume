@@ -5,6 +5,7 @@ defmodule Resume.Award do
     field :title, :string
     field :on, Ecto.Date
     belongs_to :user, Resume.User
+#    belongs_to :resume, Resume.Resume
 
     timestamps()
   end

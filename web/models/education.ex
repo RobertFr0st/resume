@@ -9,6 +9,7 @@ defmodule Resume.Education do
     field :degree, :string
     field :gpa, :float
     belongs_to :user, Resume.User
+#    belongs_to :resume, Resume.Resume
 
     timestamps()
   end

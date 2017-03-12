@@ -4,6 +4,7 @@ defmodule Resume.Skill do
   schema "skills" do
     field :name, :string
     belongs_to :user, Resume.User
+    belongs_to :resume, Resume.Resume
 
     timestamps()
   end

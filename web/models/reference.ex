@@ -7,6 +7,7 @@ defmodule Resume.Reference do
     field :phone, :string
     field :email, :string
     belongs_to :user, Resume.User
+#    belongs_to :resume, Resume.Resume
 
     timestamps()
   end
