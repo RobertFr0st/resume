@@ -1,0 +1,18 @@
+<h2>Show resume</h2>
+
+<ul>
+
+  <li>
+    <strong>File name:</strong>
+    <%= @resume.file_name %>
+  </li>
+
+  <li>
+    <strong>Objective:</strong>
+    <%= @resume.objective %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: resume_path(@conn, :edit, @resume) %>
+<%= link "Back", to: resume_path(@conn, :index) %>

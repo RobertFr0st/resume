@@ -1,0 +1,28 @@
+<h2>Listing resumes</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Objective</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for resume <- @resumes do %>
+    <tr>
+      <td><%= resume.file_name %></td>
+      <td><%= resume.objective %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: resume_path(@conn, :show, resume), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: resume_path(@conn, :edit, resume), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: resume_path(@conn, :delete, resume), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New resume", to: resume_path(@conn, :new) %>
