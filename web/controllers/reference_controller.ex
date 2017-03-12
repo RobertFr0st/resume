@@ -34,7 +34,7 @@ defmodule Resume.ReferenceController do
     changeset = Reference.changeset(reference, reference_params)
 
     case Repo.update(changeset) do
-      {:ok, reference} ->
+      {:ok, _reference} ->
         conn
         |> put_flash(:info, "Reference updated successfully.")
         |> redirect(to: registration_path(conn, :show))

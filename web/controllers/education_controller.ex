@@ -34,7 +34,7 @@ defmodule Resume.EducationController do
     changeset = Education.changeset(education, education_params)
 
     case Repo.update(changeset) do
-      {:ok, education} ->
+      {:ok, _education} ->
         conn
         |> put_flash(:info, "Education updated successfully.")
         |> redirect(to: registration_path(conn, :show))
