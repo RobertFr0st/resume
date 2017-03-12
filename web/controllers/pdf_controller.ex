@@ -1,11 +1,11 @@
 defmodule Resume.PdfController do
   use Resume.Web, :controller
 
-  alias Resume.Coherence.RegistrationController, as: User
+  import Resume.Controllers.Helpers
 
   def export(conn, _) do
 
-    user = Coherence.current_user(conn) |> User.preload_resume
+    user = Coherence.current_user(conn) |> preload_resume
 
     pdf = Phoenix.View.render_to_string(Resume.PdfView, "pdf.html", user: user)
       |> PdfGenerator.generate_binary!
