@@ -37,6 +37,7 @@ defmodule Resume.Router do
     resources "/education", EducationController, except: [:show, :index]
     resources "/award", AwardController, except: [:show, :index]
     resources "/reference", ReferenceController, except: [:show, :index]
+    resources "/resumes", ResumeController
     get "/resume", PdfController, :export
   end
 end
