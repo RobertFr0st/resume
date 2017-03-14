@@ -3,7 +3,7 @@ defmodule Resume.Repo.Migrations.AddResumeForeignKeyToSkill do
 
   def change do
     alter table(:skills) do
-      add :resume_id, references(:resumes, on_delete: :delete_all)
+      add :resume_id, references(:resumes)
     end
     create index(:skills, [:resume_id])
   end
