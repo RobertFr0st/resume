@@ -24,9 +24,9 @@ defmodule Resume.Controllers.Helpers do
   def preload_attributes(users) do
     users
     |> Repo.preload(skills: from(s in Skill, order_by: s.name))
-    |> Repo.preload(experiences: from(e in Experience, order_by: [desc: e.to]))
-    |> Repo.preload(educations: from(e in Education, order_by: [desc: e.to]))
-    |> Repo.preload(awards: from(e in Award, order_by: [desc: e.on]))
+    |> Repo.preload(experiences: from(exp in Experience, order_by: [desc: exp.to]))
+    |> Repo.preload(educations: from(edu in Education, order_by: [desc: edu.to]))
+    |> Repo.preload(awards: from(a in Award, order_by: [desc: a.on]))
     |> Repo.preload(references: from(r in Reference, order_by: r.name))
   end
 end
