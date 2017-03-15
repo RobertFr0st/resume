@@ -1,20 +1,20 @@
 defmodule Resume.Resume do
   use Resume.Web, :model
 
+  alias Resume.Repo, as: Repo
+
   schema "resumes" do
     field :file_name, :string
     field :objective, :string
 
     belongs_to :user, Resume.User
 
-    has_many :users_skills, through: [:user, :skills]
-#   the association in the current module and one step through, got: [:user]
+    many_to_many :awards, Resume.Award, join_through: "resume_awards", on_replace: :delete
+    many_to_many :experiences, Resume.Experience, join_through: "resume_experiences", on_replace: :delete
+    many_to_many :educations, Resume.Education, join_through: "resume_educations", on_replace: :delete
+    many_to_many :references, Resume.Reference, join_through: "resume_references", on_replace: :delete
+    many_to_many :skills, Resume.Skill, join_through: "resume_skills", on_replace: :delete
 
-#    has_many :experiences, through: [:user]
-#    has_many :educations, through: [:user]
-#    has_many :awards, through: [:user]
-#    has_many :references, through: [:user]
-#    has_many :resume, through: [:user]
     timestamps()
   end
 
@@ -24,6 +24,7 @@ defmodule Resume.Resume do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:file_name, :objective])
+    |> cast_assoc(:user)
     |> validate_required([:file_name, :objective])
   end
 end

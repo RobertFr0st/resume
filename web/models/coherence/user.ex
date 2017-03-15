@@ -10,12 +10,12 @@ defmodule Resume.User do
     field :address, :string
     coherence_schema
 
-    has_many :skills, Resume.Skill
+    has_many :awards, Resume.Award
     has_many :experiences, Resume.Experience
     has_many :educations, Resume.Education
-    has_many :awards, Resume.Award
     has_many :references, Resume.Reference
-    has_many :resume, Resume.Resume
+    has_many :resumes, Resume.Resume
+    has_many :skills, Resume.Skill
     timestamps
   end
 

@@ -4,7 +4,8 @@ defmodule Resume.Skill do
   schema "skills" do
     field :name, :string
     belongs_to :user, Resume.User
-    belongs_to :resume, Resume.Resume
+
+    many_to_many :resumes, Resume.Resume, join_through: "resume_skills" 
 
     timestamps()
   end
