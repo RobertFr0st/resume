@@ -15,7 +15,7 @@ defmodule Resume.Coherence.RegistrationController do
   alias Coherence.ControllerHelpers, as: Helpers
   alias Resume.Repo
 
-  import Resume.Controllers.Helpers
+  alias Resume.Controllers.Helpers, as: ResumeHelpers
 
   plug Coherence.RequireLogin when action in ~w(show edit update delete)a
   plug Coherence.ValidateOption, :registerable
@@ -73,7 +73,7 @@ defmodule Resume.Coherence.RegistrationController do
     Modified to also show the skills belonging to the user
   """
   def show(conn, _) do
-    user = Coherence.current_user(conn) |> preload_resume
+    user = Coherence.current_user(conn) |> ResumeHelpers.preload_resume
     render(conn, "show.html", user: user)
   end
 
@@ -83,7 +83,7 @@ defmodule Resume.Coherence.RegistrationController do
     Controller implimented for completeness
   """
   def index(conn, _) do
-    users = User |> Repo.all |> preload_resume
+    users = User |> Repo.all |> ResumeHelpers.preload_resume
     render(conn, "index.html", users: users)
   end
 
