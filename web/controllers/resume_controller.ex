@@ -30,24 +30,19 @@ defmodule Resume.ResumeController do
   end
 
   def create(conn, %{"resume" => resume_params}) do
-    checked_skills_ids = checked_ids(conn, "checked_skills")
-    checked_educations_ids = checked_ids(conn, "checked_educations")
-    checked_experiences_ids = checked_ids(conn, "checked_experiences")
-    checked_references_ids = checked_ids(conn, "checked_references")
-    checked_awards_ids = checked_ids(conn, "checked_awards")
+
+    params = Map.put(resume_params, "skills", fetch_attributes(conn, "checked_skills", Skill))
+    |> Map.put("educations", fetch_attributes(conn, "checked_educations", Education))
+    |> Map.put("experiences", fetch_attributes(conn, "checked_experiences", Experience))
+    |> Map.put("references", fetch_attributes(conn, "checked_references", Reference))
+    |> Map.put("awards", fetch_attributes(conn, "checked_awards", Award))
 
     changeset = 
       build_assoc(conn.assigns.current_user, :resumes)
-      |> Resume.changeset(resume_params)
+      |> Resume.changeset(params)
 
     case Repo.insert(changeset) do
       {:ok, resume} ->
-        do_update_intermediate_table(Skill, :skills, resume.id, checked_skills_ids)
-        do_update_intermediate_table(Education, :educations, resume.id, checked_educations_ids)
-        do_update_intermediate_table(Experience, :experiences, resume.id, checked_experiences_ids)
-        do_update_intermediate_table(Reference, :references, resume.id, checked_references_ids)
-        do_update_intermediate_table(Award, :awards, resume.id, checked_awards_ids)
-
         conn
         |> put_flash(:info, "Resume created successfully.")
         |> redirect(to: resume_path(conn, :index))
@@ -79,24 +74,20 @@ defmodule Resume.ResumeController do
                              ref_ids: [])
   end
 
+
+
   def update(conn, %{"id" => id, "resume" => resume_params}) do
     resume = Repo.get!(Resume, id)
-    changeset = Resume.changeset(resume, resume_params)
 
-    checked_skills_ids = checked_ids(conn, "checked_skills")
-    checked_educations_ids = checked_ids(conn, "checked_educations")
-    checked_experiences_ids = checked_ids(conn, "checked_experiences")
-    checked_references_ids = checked_ids(conn, "checked_references")
-    checked_awards_ids = checked_ids(conn, "checked_awards")
+    params = Map.put(resume_params, "skills", fetch_attributes(conn, "checked_skills", Skill))
+    |> Map.put("educations", fetch_attributes(conn, "checked_educations", Education))
+    |> Map.put("experiences", fetch_attributes(conn, "checked_experiences", Experience))
+    |> Map.put("references", fetch_attributes(conn, "checked_references", Reference))
+    |> Map.put("awards", fetch_attributes(conn, "checked_awards", Award))
 
+    changeset = Resume.changeset(resume, params)
     case Repo.update(changeset) do
       {:ok, resume} ->
-        do_update_intermediate_table(Skill, :skills, resume.id, checked_skills_ids)
-        do_update_intermediate_table(Education, :educations, resume.id, checked_educations_ids)
-        do_update_intermediate_table(Experience, :experiences, resume.id, checked_experiences_ids)
-        do_update_intermediate_table(Reference, :references, resume.id, checked_references_ids)
-        do_update_intermediate_table(Award, :awards, resume.id, checked_awards_ids)
-
         conn
         |> put_flash(:info, "Resume updated successfully.")
         |> redirect(to: resume_path(conn, :show, resume))
@@ -115,6 +106,10 @@ defmodule Resume.ResumeController do
     conn
     |> put_flash(:info, "Resume deleted successfully.")
     |> redirect(to: resume_path(conn, :index))
+  end
+
+  defp fetch_attributes(conn, conn_key, model) do
+    checked_ids(conn, conn_key) |> Enum.map(fn(id) -> Repo.get(model, id) end)
   end
 
   defp checked_ids(conn, checked_list) do
@@ -136,18 +131,6 @@ defmodule Resume.ResumeController do
     case tuple do
       {id, "true"} -> String.to_integer id
       _ -> nil
-    end
-  end
-
-  defp do_update_intermediate_table(model, model_atom, resume_id, new_ids) do
-    if length(new_ids) > 0 do
-      new_attributes = new_ids |> Enum.map(fn(id) -> Repo.get(model, id) end) 
-
-      Repo.get(Resume, resume_id)
-      |> Repo.preload(model_atom)
-      |> Ecto.Changeset.change
-      |> Ecto.Changeset.put_assoc(model_atom, new_attributes)
-      |> Repo.update
     end
   end
 end
