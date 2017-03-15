@@ -34,13 +34,12 @@ defmodule Resume.Resume do
     |> Repo.preload(:experiences)
     |> Repo.preload(:references)
     |> Repo.preload(:awards)
-    |> Ecto.Changeset.change #investigate removing this command
+    |> cast(params, [:file_name, :objective])
     |> put_assoc(:skills, Map.get(params, "skills"))
     |> put_assoc(:awards, Map.get(params, "awards"))
     |> put_assoc(:experiences, Map.get(params, "experiences"))
     |> put_assoc(:educations, Map.get(params, "educations"))
     |> put_assoc(:references, Map.get(params, "references"))
-    |> cast(params, [:file_name, :objective])
     |> cast_assoc(:user)
     |> validate_required([:file_name, :objective])
   end
