@@ -31,11 +31,7 @@ defmodule Resume.ResumeController do
 
   def create(conn, %{"resume" => resume_params}) do
 
-    params = Map.put(resume_params, "skills", fetch_attributes(conn, "checked_skills", Skill))
-    |> Map.put("educations", fetch_attributes(conn, "checked_educations", Education))
-    |> Map.put("experiences", fetch_attributes(conn, "checked_experiences", Experience))
-    |> Map.put("references", fetch_attributes(conn, "checked_references", Reference))
-    |> Map.put("awards", fetch_attributes(conn, "checked_awards", Award))
+    params = params_with_children(resume_params, conn)
 
     changeset = 
       build_assoc(conn.assigns.current_user, :resumes)
@@ -79,11 +75,7 @@ defmodule Resume.ResumeController do
   def update(conn, %{"id" => id, "resume" => resume_params}) do
     resume = Repo.get!(Resume, id)
 
-    params = Map.put(resume_params, "skills", fetch_attributes(conn, "checked_skills", Skill))
-    |> Map.put("educations", fetch_attributes(conn, "checked_educations", Education))
-    |> Map.put("experiences", fetch_attributes(conn, "checked_experiences", Experience))
-    |> Map.put("references", fetch_attributes(conn, "checked_references", Reference))
-    |> Map.put("awards", fetch_attributes(conn, "checked_awards", Award))
+    params = params_with_children(resume_params, conn)
 
     changeset = Resume.changeset(resume, params)
     case Repo.update(changeset) do
@@ -106,6 +98,14 @@ defmodule Resume.ResumeController do
     conn
     |> put_flash(:info, "Resume deleted successfully.")
     |> redirect(to: resume_path(conn, :index))
+  end
+
+  defp params_with_children(resume_params, conn) do
+    Map.put(resume_params, "skills", fetch_attributes(conn, "checked_skills", Skill))
+    |> Map.put("educations", fetch_attributes(conn, "checked_educations", Education))
+    |> Map.put("experiences", fetch_attributes(conn, "checked_experiences", Experience))
+    |> Map.put("references", fetch_attributes(conn, "checked_references", Reference))
+    |> Map.put("awards", fetch_attributes(conn, "checked_awards", Award))
   end
 
   defp fetch_attributes(conn, conn_key, model) do
