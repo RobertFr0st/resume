@@ -12,6 +12,32 @@
     <%= @resume.objective %>
   </li>
 
+  <h3>Skills</h3>
+  <%= for skill <- @resume.skills  do %>
+    <li><%= skill.name %></li>
+  <% end %>
+
+  <h3>Educations</h3>
+  <%= for edu <- @resume.educations  do %>
+    <li><%= edu.organization %></li>
+  <% end %>
+
+
+  <h3>Experiences</h3>
+  <%= for exp <- @resume.experiences  do %>
+    <li><%= exp.organization %></li>
+  <% end %>
+
+  <h3>References</h3>
+  <%= for ref <- @resume.references  do %>
+    <li><%= ref.name %></li>
+  <% end %>
+
+  <h3>Awards</h3>
+  <%= for award <- @resume.awards  do %>
+    <li><%= award.name %></li>
+  <% end %>
+
 </ul>
 
 <%= link "Edit", to: resume_path(@conn, :edit, @resume) %>
