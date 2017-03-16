@@ -14,11 +14,8 @@ defmodule Resume.Coherence.RegistrationController do
   require Logger
   alias Coherence.ControllerHelpers, as: Helpers
   alias Resume.Repo
-  alias Resume.Skill
-  alias Resume.Experience
-  alias Resume.Education
-  alias Resume.Award
-  alias Resume.Reference
+
+  alias Resume.Controllers.Helpers, as: ResumeHelpers
 
   plug Coherence.RequireLogin when action in ~w(show edit update delete)a
   plug Coherence.ValidateOption, :registerable
@@ -76,7 +73,7 @@ defmodule Resume.Coherence.RegistrationController do
     Modified to also show the skills belonging to the user
   """
   def show(conn, _) do
-    user = Coherence.current_user(conn) |> preload_resume
+    user = Coherence.current_user(conn) |> ResumeHelpers.preload_resume
     render(conn, "show.html", user: user)
   end
 
@@ -86,7 +83,7 @@ defmodule Resume.Coherence.RegistrationController do
     Controller implimented for completeness
   """
   def index(conn, _) do
-    users = User |> Repo.all |> preload_resume
+    users = User |> Repo.all |> ResumeHelpers.preload_resume
     render(conn, "index.html", users: users)
   end
 
@@ -124,17 +121,5 @@ defmodule Resume.Coherence.RegistrationController do
     conn = Coherence.SessionController.delete(conn)
     Config.repo.delete! user
     redirect_to(conn, :registration_delete, params)
-  end
-
-  @doc """
-  Preloads all the models the user owns
-  """
-  def preload_resume(users) do
-    users
-    |> Repo.preload(skills: from(s in Skill, order_by: s.name))
-    |> Repo.preload(experiences: from(e in Experience, order_by: [desc: e.to]))
-    |> Repo.preload(educations: from(e in Education, order_by: [desc: e.to]))
-    |> Repo.preload(awards: from(e in Award, order_by: [desc: e.on]))
-    |> Repo.preload(references: from(r in Reference, order_by: r.name))
   end
 end

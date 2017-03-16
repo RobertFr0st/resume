@@ -10,6 +10,8 @@ defmodule Resume.Education do
     field :gpa, :float
     belongs_to :user, Resume.User
 
+    many_to_many :resumes, Resume.Resume, join_through: "resume_educations"
+
     timestamps()
   end
 

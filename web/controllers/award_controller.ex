@@ -32,7 +32,7 @@ defmodule Resume.AwardController do
     changeset = Award.changeset(award, award_params)
 
     case Repo.update(changeset) do
-      {:ok, award} ->
+      {:ok, _award} ->
         conn
         |> put_flash(:info, "Award updated successfully.")
         |> redirect(to: registration_path(conn, :show))

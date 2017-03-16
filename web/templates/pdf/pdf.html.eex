@@ -104,11 +104,11 @@
        <p class="content left col-xs-12"><b>Objective</b> Seeking Internship for Summer of 2017</p>
      </div>
 
-     <%= if(length(@user.skills) > 0) do %>
+     <%= if(length(@resume.skills) > 0) do %>
        <div id="skill" class="row no-break">
          <p class="content left col-xs-12"><b>Skills</b></p>
 
-         <% {c1,c2,c3,c4} = skill_columns(@user.skills) %>
+         <% {c1,c2,c3,c4} = skill_columns(@resume.skills) %>
 
          <div class="col-xs-3 content">
            <ul class="no-bullet">
@@ -144,15 +144,15 @@
        </div>
      <%= end %>
 
-    <%= if(length(@user.educations) > 0) do %>
+    <%= if(length(@resume.educations) > 0) do %>
       <div id="education">
 
-        <%= if(length(@user.educations) > 1) do %>
+        <%= if(length(@resume.educations) > 1) do %>
           <div class="row">
             <p class="content left col-xs-12"><b>Education</b></p>
           </div>
           <ul class="no-bullet">
-            <%= for edu <- @user.educations  do %>
+            <%= for edu <- @resume.educations  do %>
               <li class="no-break">
                 <div class="row">
                   <p class="col-xs-8 content"><%= edu.organization %></p>
@@ -165,7 +165,7 @@
           </ul>
         <%= else %>
           <ul class="no-bullet">
-            <%= for edu <- @user.educations  do %>
+            <%= for edu <- @resume.educations  do %>
               <li class="no-break">
                 <div class="row">
                   <p class="col-xs-8 content"><b>Education</b> <%= edu.organization %></p>
@@ -180,7 +180,7 @@
       </div>
     <%= end %>
 
-    <% {work, volunteer, project} = experience_rows(@user.experiences) %>
+    <% {work, volunteer, project} = experience_rows(@resume.experiences) %>
 
     <%= if(length(project) > 0) do %>
     <div id="projects">
@@ -246,7 +246,6 @@
       <%= end %>
     </div>
     <%= end %>
-
 
     <%= if(length(volunteer) > 0) do %>
     <div id="service">
@@ -380,14 +379,14 @@
     <%= end %>
 
 
-      <%= if(length(@user.awards) > 0) do %>
+      <%= if(length(@resume.awards) > 0) do %>
         <div id="awards">
-          <%= if(length(@user.awards) > 1) do %>
+          <%= if(length(@resume.awards) > 1) do %>
             <div class="row">
               <p class="content left col-xs-12"><b>Honors</b></p>
             </div>
             <ul class="no-bullet">
-              <%= for aw <- @user.awards  do %>
+              <%= for aw <- @resume.awards  do %>
                 <li class="no-break">
                   <div class="row">
                     <p class="col-xs-8 content"><%= aw.title %></p>
@@ -398,7 +397,7 @@
             </ul>
           <%= else %>
             <ul class="no-bullet">
-              <%= for aw <- @user.awards  do %>
+              <%= for aw <- @resume.awards  do %>
                 <li class="no-break">
                   <div class="row">
                     <p class="col-xs-8 content"><b>Honors</b> <%= aw.title %></p>
@@ -411,15 +410,15 @@
         </div>
       <%= end %>
 
-      <%= if(length(@user.references) > 0) do %>
+      <%= if(length(@resume.references) > 0) do %>
         <div id="reference"> 
-          <%= if(length(@user.references) > 1) do %>
+          <%= if(length(@resume.references) > 1) do %>
             <div class="row">
               <p class="content left col-xs-12"><b>References</b></p>
             </div>
 
             <ul class="no-bullet">
-              <%= for ref <- @user.references  do %>
+              <%= for ref <- @resume.references  do %>
                 <li class="reference no-break">
                   <div class="row">
                     <p class="col-xs-6 content"><%= ref.name %></p>
@@ -432,7 +431,7 @@
             </ul>
           <%= else %>
             <ul class="no-bullet">
-              <%= for ref <- @user.references  do %>
+              <%= for ref <- @resume.references  do %>
                 <li class="reference no-break">
                   <div class="row">
                     <p class="col-xs-6 content"> <b>References</b> <%= ref.name %></p>

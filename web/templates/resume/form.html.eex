@@ -1,0 +1,59 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :file_name, class: "control-label" %>
+    <%= text_input f, :file_name, class: "form-control" %>
+    <%= error_tag f, :file_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :objective, class: "control-label" %>
+    <%= text_input f, :objective, class: "form-control" %>
+    <%= error_tag f, :objective %>
+  </div>
+
+  <h3>Skills</h3>
+  <%= for skill <- @user.skills  do %>
+    <% checked = skill in @resume.skills %>
+    <div><%= checkbox :checked_skills, String.to_atom("#{skill.id}"), value: skill.name, checked: checked %> <%= skill.name %></div>
+    <%= error_tag f, :checked_skills %>
+  <% end%>
+
+  <h3>Experiences</h3>
+  <%= for exp <- @user.experiences  do %>
+    <% checked = exp in @resume.experiences %>
+    <div><%= checkbox :checked_experiences, String.to_atom("#{exp.id}"), value: exp.organization, checked: checked %> <%= exp.organization %></div>
+    <%= error_tag f, :checked_experiences %>
+  <% end%>
+
+  <h3>Educations</h3>
+  <%= for edu <- @user.educations  do %>
+    <% checked = edu in @resume.educations %>
+    <div><%= checkbox :checked_educations, String.to_atom("#{edu.id}"), value: edu.organization, checked: checked %> <%= edu.organization %></div>
+    <%= error_tag f, :checked_educations %>
+  <% end%>
+
+  <h3>Awards</h3>
+  <%= for award <- @user.awards  do %>
+    <% checked = award in @resume.awards %>
+    <div><%= checkbox :checked_awards, String.to_atom("#{award.id}"), value: award.name, checked: checked %> <%= award.name %></div>
+    <%= error_tag f, :checked_awards %>
+  <% end%>
+
+  <h3>References</h3>
+  <%= for ref <- @user.references  do %>
+    <% checked = ref in @resume.references %>
+    <div><%= checkbox :checked_references, String.to_atom("#{ref.id}"), value: ref.name, checked: checked %> <%= ref.name %></div>
+    <%= error_tag f, :checked_references %>
+  <% end%>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
+

@@ -21,8 +21,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <%= if Coherence.logged_in?(@conn) do %>
-            <li class="nav-item"><%= link "Resume", to: pdf_path(@conn, :export) , class: "nav-link" %></li>
-            <li class="nav-item"><%= link "Elm Test", to: pdf_path(@conn, :new) , class: "nav-link" %></li>
+            <li class="nav-item"><%= link "Resume", to: resume_path(@conn, :index) , class: "nav-link" %></li>
             <li class="nav-item"><%= link "Show", to: registration_path(@conn, :show) , class: "nav-link" %></li>
             <li class="nav-item"><%= link "Edit", to: registration_path(@conn, :edit) , class: "nav-link" %></li>
             <li class="nav-item dropdown">
