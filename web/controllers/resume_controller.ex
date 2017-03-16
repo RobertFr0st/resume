@@ -20,13 +20,8 @@ defmodule Resume.ResumeController do
     changeset = Resume.changeset(%Resume{})
 
     user = Coherence.current_user(conn) |> Helper.preload_attributes
-    render(conn, "new.html", changeset: changeset,
-                             user: user,
-                             skill_ids: [],
-                             exp_ids: [],
-                             edu_ids: [],
-                             award_ids: [],
-                             ref_ids: [])
+    resume = %Resume{} |> Helper.preload_attributes
+    render(conn, "new.html", resume: resume, changeset: changeset, user: user)
   end
 
   def create(conn, %{"resume" => resume_params}) do
@@ -43,9 +38,12 @@ defmodule Resume.ResumeController do
         |> put_flash(:info, "Resume created successfully.")
         |> redirect(to: resume_path(conn, :index))
       {:error, changeset} ->
+        user = Coherence.current_user(conn) |> Helper.preload_attributes
+        resume = %Resume{} |> Helper.preload_attributes
+
         conn
         |> put_flash(:error, "Resume creation failed")
-        |> render(:new, changeset: changeset)
+        |> render(:new, resume: resume, changeset: changeset, user: user)
     end
   end
 
@@ -61,13 +59,7 @@ defmodule Resume.ResumeController do
     changeset = Resume.changeset(resume)
 
     user = Coherence.current_user(conn) |> Helper.preload_attributes
-    render(conn, "edit.html", resume: resume, changeset: changeset,
-                             user: user,
-                             skill_ids: [],
-                             exp_ids: [],
-                             edu_ids: [],
-                             award_ids: [],
-                             ref_ids: [])
+    render(conn, "edit.html", resume: resume |> Helper.preload_attributes, changeset: changeset, user: user)
   end
 
 
@@ -84,7 +76,10 @@ defmodule Resume.ResumeController do
         |> put_flash(:info, "Resume updated successfully.")
         |> redirect(to: resume_path(conn, :show, resume))
       {:error, changeset} ->
-        render(conn, "edit.html", resume: resume, changeset: changeset)
+        user = Coherence.current_user(conn) |> Helper.preload_attributes
+
+        conn
+        |> render(:edit, resume: resume |> Helper.preload_attributes, changeset: changeset, user: user)
     end
   end
 
