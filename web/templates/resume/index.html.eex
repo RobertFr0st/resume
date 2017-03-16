@@ -16,6 +16,7 @@
       <td><%= resume.objective %></td>
 
       <td class="text-right">
+        <%= link "Export to Pdf", to: resume_path(@conn, :export, resume) , class: "btn btn-default btn-xs" %>
         <%= link "Show", to: resume_path(@conn, :show, resume), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: resume_path(@conn, :edit, resume), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: resume_path(@conn, :delete, resume), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>

@@ -7,6 +7,7 @@ defmodule Resume.ResumeController do
   alias Resume.Education
   alias Resume.Reference
   alias Resume.Award
+  alias Resume.PdfView
 
   alias Resume.Resume
   alias Ecto.Changeset, as: Changeset
@@ -33,7 +34,7 @@ defmodule Resume.ResumeController do
       |> Resume.changeset(params)
 
     case Repo.insert(changeset) do
-      {:ok, resume} ->
+      {:ok, _resume} ->
         conn
         |> put_flash(:info, "Resume created successfully.")
         |> redirect(to: resume_path(conn, :index))
@@ -61,8 +62,6 @@ defmodule Resume.ResumeController do
     user = Coherence.current_user(conn) |> Helper.preload_attributes
     render(conn, "edit.html", resume: resume |> Helper.preload_attributes, changeset: changeset, user: user)
   end
-
-
 
   def update(conn, %{"id" => id, "resume" => resume_params}) do
     resume = Repo.get!(Resume, id)
@@ -93,6 +92,23 @@ defmodule Resume.ResumeController do
     conn
     |> put_flash(:info, "Resume deleted successfully.")
     |> redirect(to: resume_path(conn, :index))
+  end
+
+  def export(conn, %{"id" => id}) do
+    resume = Repo.get!(Resume, id) |> Helper.preload_attributes
+    user = Coherence.current_user(conn)
+
+    pdf = Phoenix.View.render_to_string(PdfView, "pdf.html", user: user, resume: resume)
+      |> PdfGenerator.generate_binary!
+
+    download(conn, pdf, resume.file_name)
+  end
+
+  defp download(conn, pdf, filename) do
+    conn
+    |> put_resp_content_type("text/pdf")
+    |> put_resp_header("content-disposition", "attachment; filename=\"#{filename}.pdf\"")
+    |> send_resp(200, pdf)
   end
 
   defp params_with_children(resume_params, conn) do
