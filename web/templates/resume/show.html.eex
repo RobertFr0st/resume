@@ -35,7 +35,7 @@
 
   <h3>Awards</h3>
   <%= for award <- @resume.awards  do %>
-    <li><%= award.name %></li>
+    <li><%= award.title %></li>
   <% end %>
 
 </ul>
