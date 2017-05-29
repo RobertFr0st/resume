@@ -36,10 +36,10 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :resume, Resume.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("PG_USERNAME"),
+  password: System.get_env("PG_PASSWORD"),
+  hostname: System.get_env("PG_HOST"),
   database: "resume_dev",
-  hostname: "localhost",
   pool_size: 10
 
 # %% Coherence Configuration %%   Don't remove this line

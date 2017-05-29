@@ -1,0 +1,26 @@
+---
+version: '3'
+services:
+  web:
+    build: .
+    command: >
+      bash -c "npm install && mix deps.get &&
+               mix compile &&  
+               mix ecto.migrate &&
+               mix phoenix.server"
+    environment:
+      - MIX_ENV=dev
+      - PORT=4000
+      - PG_HOST=postgres
+      - PG_USERNAME=postgres
+      - PG_PASSWORD=password
+    volumes:
+      - .:/resume
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres
+    ports:
+     - "5432"

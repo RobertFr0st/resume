@@ -4,7 +4,7 @@ defmodule Resume.Mixfile do
   def project do
     [app: :resume,
      version: "0.0.1",
-     elixir: "~> 1.2",
+     elixir: "~> 1.4",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
@@ -18,8 +18,16 @@ defmodule Resume.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Resume, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :coherence, :pdf_generator]]
+     applications: [:phoenix,
+                    :phoenix_pubsub,
+                    :phoenix_html,
+                    :cowboy,
+                    :logger,
+                    :gettext,
+                    :phoenix_ecto,
+                    :postgrex,
+                    :coherence,
+                    :pdf_generator]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +46,7 @@ defmodule Resume.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:coherence, "~> 0.3"},
+     {:coherence, "~> 0.3.1"},
      {:pdf_generator, "~> 0.3.5"}]
   end
 
