@@ -101,7 +101,7 @@
      </div>
 
      <div id="objective" class="row">
-       <p class="content left col-xs-12"><b>Objective</b> Seeking Internship for Summer of 2017</p>
+       <p class="content left col-xs-12"><b>Objective</b> <%= @resume.objective %></p>
      </div>
 
      <%= if(length(@resume.skills) > 0) do %>
