@@ -25,6 +25,7 @@ exports.config = {
     watched: [
       "web/static",
       "test/static",
+      "web/elm",
     ],
 
     // Where to compile files to
@@ -36,6 +37,18 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/web\/static\/vendor/]
+    },
+    elmBrunch: {
+      executablePath: "../../node_modules/elm/binwrappers",
+      elmFolder: "web/elm/",
+      mainModules: [
+        'Main.elm'
+      ],
+      outputFolder: "../static/vendor",
+      outputFile: "elm.js",
+      makeParameters: [
+        "--warn"
+      ]
     }
   },
 
