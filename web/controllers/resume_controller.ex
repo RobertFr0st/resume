@@ -8,6 +8,7 @@ defmodule Resume.ResumeController do
   alias Resume.Reference
   alias Resume.Award
   alias Resume.PdfView
+
   alias Resume.Resume
   alias Ecto.Changeset, as: Changeset
 
@@ -25,6 +26,7 @@ defmodule Resume.ResumeController do
   end
 
   def create(conn, %{"resume" => resume_params}) do
+
     params = params_with_children(resume_params, conn)
 
     changeset = 
@@ -95,6 +97,7 @@ defmodule Resume.ResumeController do
   def export(conn, %{"id" => id}) do
     resume = Repo.get!(Resume, id) |> Helper.preload_attributes
     user = Coherence.current_user(conn)
+
     pdf = Phoenix.View.render_to_string(PdfView, "pdf.html", user: user, resume: resume)
       |> PdfGenerator.generate_binary!
 

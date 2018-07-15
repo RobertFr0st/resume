@@ -23,8 +23,5 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :pdf_generator,
-    command_prefix: "/usr/bin/xvfb-run"
-
 #enviromental configurations
 import_config "#{Mix.env}.exs"
