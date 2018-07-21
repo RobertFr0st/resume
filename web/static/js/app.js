@@ -15,12 +15,6 @@ import "phoenix_html"
 import $ from "jquery"
 import "jquery"
 
-const elmDiv = document.getElementById('elm-main');
-if (elmDiv) {
-  Elm.Main.embed(elmDiv);
-}
-
-
 // Ugh...
 global.jQuery = require("jquery")  // Needed for tether or bootstrap...
 global.bootstrap = require("bootstrap")
@@ -31,8 +25,3 @@ global.bootstrap = require("bootstrap")
 
 // import socket from "./socket"
 
-// Set up our Elm App, elm auto imports from vendor directory
-//let counterDiv = document.getElementById("counter-app")
-//if (counterDiv !== undefined) {
-//        Elm.Main.embed(counterDiv)
-//}
