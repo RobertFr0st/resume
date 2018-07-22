@@ -88,14 +88,11 @@
 
      <!-- class="row" -->
      <div id="contact" class="row">
-       <div id="email" class="col-xs-3">
+       <div id="email" class="col-xs-6">
          <p class="content left"><b>Email</b> <%= @user.email%><p>
        </div>
-       <div id="phone" class="col-xs-3">
+       <div id="phone" class="col-xs-6">
          <p class="content left"><b>Phone</b> <%= phone_format(@user.phone) %></p>
-       </div>
-       <div id="address" class="col-xs-6">
-         <p class="content left"><b>Address</b> <%= @user.address %></p>
        </div>
      </div>
 
