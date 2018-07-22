@@ -209,137 +209,136 @@
     <%= end %>
 
     <% {work, volunteer, project} = experience_rows(@resume.experiences) %>
+      <%= if(length(work) > 0) do %>
+        <div id="work">
+          <%= if(length(work) > 1) do %>
+            <div class="row">
+              <p class="content left col-xs-12"><b>Work</b></p>
+            </div>
 
-    <%= if(length(work) > 0) do %>
-    <div id="work">
-      <%= if(length(work) > 1) do %>
-        <div class="row">
-          <p class="content left col-xs-12"><b>Work</b></p>
+            <ul class="no-bullet">
+              <%= for exp <- work  do %>
+                <li class="no-break">
+                  <div class="row">
+                    <p class="col-xs-8 content"><%= exp.organization %></p>
+                    <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+                    <p class="col-xs-6 gray sub-content"><%= exp.position %></p>
+                  </div>
+
+                  <div class="row col-xs-12">
+                    <ul>
+                      <%= unless exp.description_one == nil do %>
+                        <li class="sub-content"><%= exp.description_one %></li>
+                      <%= end %>
+
+                      <%= unless exp.description_two == nil do %>
+                        <li class="sub-content"><%= exp.description_two %></li>
+                      <%= end %>
+
+                      <%= unless exp.description_three == nil do %>
+                        <li class="sub-content"><%= exp.description_three %></li>
+                      <%= end %>
+                    </ul>
+                  </div>
+                </li>
+              <%= end %>
+            </ul>
+          <%= else %>
+            <ul class="no-bullet">
+              <%= for exp <- work  do %>
+                <li class="no-break">
+                  <div class="row">
+                    <p class="col-xs-8 content"><b>Work</b> <%= exp.organization %></p>
+                    <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+                    <p class="col-xs-6 gray sub-content"><%= exp.position %></p>
+                  </div>
+
+                  <div class="row col-xs-12">
+                    <ul>
+                      <%= unless exp.description_one == nil do %>
+                        <li class="sub-content"><%= exp.description_one %></li>
+                      <%= end %>
+
+                      <%= unless exp.description_two == nil do %>
+                        <li class="sub-content"><%= exp.description_two %></li>
+                      <%= end %>
+
+                      <%= unless exp.description_three == nil do %>
+                        <li class="sub-content"><%= exp.description_three %></li>
+                      <%= end %>
+                    </ul>
+                  </div>
+                </li>
+              <%= end %>
+            </ul>
+          <%= end %>
         </div>
-
-        <ul class="no-bullet">
-          <%= for exp <- work  do %>
-            <li class="no-break">
-              <div class="row">
-                <p class="col-xs-8 content"><%= exp.organization %></p>
-                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
-                <p class="col-xs-6 gray sub-content"><%= exp.position %></p>
-              </div>
-
-              <div class="row col-xs-12">
-                <ul>
-                  <%= unless exp.description_one == nil do %>
-                    <li class="sub-content"><%= exp.description_one %></li>
-                  <%= end %>
-
-                  <%= unless exp.description_two == nil do %>
-                    <li class="sub-content"><%= exp.description_two %></li>
-                  <%= end %>
-
-                  <%= unless exp.description_three == nil do %>
-                    <li class="sub-content"><%= exp.description_three %></li>
-                  <%= end %>
-                </ul>
-              </div>
-            </li>
-          <%= end %>
-        </ul>
-      <%= else %>
-        <ul class="no-bullet">
-          <%= for exp <- work  do %>
-            <li class="no-break">
-              <div class="row">
-                <p class="col-xs-8 content"><b>Work</b> <%= exp.organization %></p>
-                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
-                <p class="col-xs-6 gray sub-content"><%= exp.position %></p>
-              </div>
-
-              <div class="row col-xs-12">
-                <ul>
-                  <%= unless exp.description_one == nil do %>
-                    <li class="sub-content"><%= exp.description_one %></li>
-                  <%= end %>
-
-                  <%= unless exp.description_two == nil do %>
-                    <li class="sub-content"><%= exp.description_two %></li>
-                  <%= end %>
-
-                  <%= unless exp.description_three == nil do %>
-                    <li class="sub-content"><%= exp.description_three %></li>
-                  <%= end %>
-                </ul>
-              </div>
-            </li>
-          <%= end %>
-        </ul>
       <%= end %>
-    </div>
-    <%= end %>
 
-    <%= if(length(project) > 0) do %>
-    <div id="projects">
-      <%= if(length(project) > 1) do %>
-        <div class="row">
-          <p class="content left col-xs-12"><b>Projects</b></p>
+      <%= if(length(project) > 0) do %>
+        <div id="projects">
+          <%= if(length(project) > 1) do %>
+            <div class="row">
+              <p class="content left col-xs-12"><b>Projects</b></p>
+            </div>
+            <ul class="no-bullet">
+              <%= for exp <- project  do %>
+                <li class="no-break">
+                  <div class="row">
+                    <p class="col-xs-8 content"><%= exp.organization %></p>
+                    <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+                    <p class="col-xs-6 gray sub-content"><%= exp.position %></p>
+                  </div>
+
+                  <div class="row col-xs-12">
+                    <ul>
+                      <%= unless exp.description_one == nil do %>
+                        <li class="sub-content"><%= exp.description_one %></li>
+                      <%= end %>
+
+                      <%= unless exp.description_two == nil do %>
+                        <li class="sub-content"><%= exp.description_two %></li>
+                      <%= end %>
+
+                      <%= unless exp.description_three == nil do %>
+                        <li class="sub-content"><%= exp.description_three %></li>
+                      <%= end %>
+                    </ul>
+                  </div>
+                </li>
+              <%= end %>
+            </ul>
+          <%= else %>
+            <ul class="no-bullet">
+              <%= for exp <- project  do %>
+                <li class="no-break">
+                  <div class="row">
+                    <p class="col-xs-8 content"><b>Projects</b> <%= exp.organization %></p>
+                    <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
+                    <p class="col-xs-6 gray sub-content"><%= exp.position %></p>
+                  </div>
+
+                  <div class="row col-xs-12">
+                    <ul>
+                      <%= unless exp.description_one == nil do %>
+                        <li class="sub-content"><%= exp.description_one %></li>
+                      <%= end %>
+
+                      <%= unless exp.description_two == nil do %>
+                        <li class="sub-content"><%= exp.description_two %></li>
+                      <%= end %>
+
+                      <%= unless exp.description_three == nil do %>
+                        <li class="sub-content"><%= exp.description_three %></li>
+                      <%= end %>
+                    </ul>
+                  </div>
+                </li>
+              <%= end %>
+            </ul>
+          <%= end %>
         </div>
-        <ul class="no-bullet">
-          <%= for exp <- project  do %>
-            <li class="no-break">
-              <div class="row">
-                <p class="col-xs-8 content"><%= exp.organization %></p>
-                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
-                <p class="col-xs-6 gray sub-content"><%= exp.position %></p>
-              </div>
-
-              <div class="row col-xs-12">
-                <ul>
-                  <%= unless exp.description_one == nil do %>
-                    <li class="sub-content"><%= exp.description_one %></li>
-                  <%= end %>
-
-                  <%= unless exp.description_two == nil do %>
-                    <li class="sub-content"><%= exp.description_two %></li>
-                  <%= end %>
-
-                  <%= unless exp.description_three == nil do %>
-                    <li class="sub-content"><%= exp.description_three %></li>
-                  <%= end %>
-                </ul>
-              </div>
-            </li>
-          <%= end %>
-        </ul>
-      <%= else %>
-        <ul class="no-bullet">
-          <%= for exp <- project  do %>
-            <li class="no-break">
-              <div class="row">
-                <p class="col-xs-8 content"><b>Projects</b> <%= exp.organization %></p>
-                <p class="col-xs-4 right content"><%= english_date(exp.from) %> - <%= english_date(exp.to) %></p>
-                <p class="col-xs-6 gray sub-content"><%= exp.position %></p>
-              </div>
-
-              <div class="row col-xs-12">
-                <ul>
-                  <%= unless exp.description_one == nil do %>
-                    <li class="sub-content"><%= exp.description_one %></li>
-                  <%= end %>
-
-                  <%= unless exp.description_two == nil do %>
-                    <li class="sub-content"><%= exp.description_two %></li>
-                  <%= end %>
-
-                  <%= unless exp.description_three == nil do %>
-                    <li class="sub-content"><%= exp.description_three %></li>
-                  <%= end %>
-                </ul>
-              </div>
-            </li>
-          <%= end %>
-        </ul>
       <%= end %>
-    </div>
-    <%= end %>
 
     <%= if(length(volunteer) > 0) do %>
     <div id="service">
@@ -404,8 +403,6 @@
        </ul>
       <%= end %>
     </div>
-    <%= end %>
-
     <%= end %>
 
       <%= if(length(@resume.references) > 0) do %>
