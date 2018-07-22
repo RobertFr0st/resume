@@ -177,6 +177,37 @@
       </div>
     <%= end %>
 
+    <%= if(length(@resume.awards) > 0) do %>
+      <div id="awards">
+        <%= if(length(@resume.awards) > 1) do %>
+          <div class="row">
+            <p class="content left col-xs-12"><b>Certificates</b></p>
+          </div>
+          <ul class="no-bullet">
+            <%= for aw <- @resume.awards  do %>
+              <li class="no-break">
+                <div class="row">
+                  <p class="col-xs-8 content"><%= aw.title %></p>
+                  <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
+                </div>
+              </li>
+            <%= end %>
+          </ul>
+        <%= else %>
+          <ul class="no-bullet">
+            <%= for aw <- @resume.awards  do %>
+              <li class="no-break">
+                <div class="row">
+                  <p class="col-xs-8 content"><b>Certification</b> <%= aw.title %></p>
+                  <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
+                </div>
+              </li>
+            <%= end %>
+          </ul>
+        <%= end %>
+      </div>
+    <%= end %>
+
     <% {work, volunteer, project} = experience_rows(@resume.experiences) %>
 
     <%= if(length(project) > 0) do %>
@@ -374,39 +405,6 @@
       <%= end %>
     </div>
     <%= end %>
-
-
-
-      <%= if(length(@resume.awards) > 0) do %>
-        <div id="awards">
-          <%= if(length(@resume.awards) > 1) do %>
-            <div class="row">
-              <p class="content left col-xs-12"><b>Honors</b></p>
-            </div>
-            <ul class="no-bullet">
-              <%= for aw <- @resume.awards  do %>
-                <li class="no-break">
-                  <div class="row">
-                    <p class="col-xs-8 content"><%= aw.title %></p>
-                    <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
-                  </div>
-                </li>
-              <%= end %>
-            </ul>
-          <%= else %>
-            <ul class="no-bullet">
-              <%= for aw <- @resume.awards  do %>
-                <li class="no-break">
-                  <div class="row">
-                    <p class="col-xs-8 content"><b>Honors</b> <%= aw.title %></p>
-                    <p class="col-xs-4 right content"><%= english_date(aw.on) %></p>
-                  </div>
-                </li>
-              <%= end %>
-            </ul>
-          <%= end %>
-        </div>
-      <%= end %>
 
       <%= if(length(@resume.references) > 0) do %>
         <div id="reference"> 

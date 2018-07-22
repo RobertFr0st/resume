@@ -38,7 +38,7 @@
     <%= error_tag f, :checked_educations %>
   <% end%>
 
-  <h3>Awards</h3>
+  <h3>Certificates</h3>
   <%= for award <- @user.awards  do %>
     <% checked = award in @resume.awards %>
     <div><%= checkbox :checked_awards, String.to_atom("#{award.id}"), value: award.title, checked: checked %> <%= award.title %></div>

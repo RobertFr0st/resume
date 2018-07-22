@@ -30,7 +30,7 @@
             <%= link "Skill", to: skill_path(@conn, :new), class: "nav-link" %>
             <%= link "Experience", to: experience_path(@conn, :new), class: "nav-link" %>
             <%= link "Education", to: education_path(@conn, :new), class: "nav-link" %>
-            <%= link "Award", to: award_path(@conn, :new), class: "nav-link" %>
+            <%= link "Certificate", to: award_path(@conn, :new), class: "nav-link" %>
             <%= link "Reference", to: reference_path(@conn, :new), class: "nav-link" %>
           </div>
         </li>
